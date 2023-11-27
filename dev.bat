@@ -1,1 +1,1 @@
-start "dev" /max yarn dev -- --host
+start "dev" /max pnpm dev -- --host
