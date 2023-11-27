@@ -1,8 +1,9 @@
 import { ReactNode } from 'react'
-import { Link } from '../components/Link'
-
-import '@unocss/reset/tailwind-compat.css'
+import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
+// import 'virtual:unocss-devtools'
+
+import { Link } from '../components/Link'
 
 export default function LayoutDefault({	children }: { children: ReactNode }) {
 	const linkProps = {
