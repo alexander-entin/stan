@@ -37,4 +37,9 @@ export default defineConfig({
 		ssr({}),
 		telefunc(),
 	],
+	resolve: {
+		alias: {
+			"/src": '/src',
+		},
+	},
 })

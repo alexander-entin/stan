@@ -7,4 +7,4 @@
 !.yarn/versions
 
 build
-_node_modules
+node_modules

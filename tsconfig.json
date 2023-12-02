@@ -1,4 +1,7 @@
 {
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
     "strict": true,
     "allowJs": true,
@@ -22,9 +25,13 @@
       "vike-react"
     ],
     "jsx": "preserve",
-    "jsxImportSource": "react"
-  },
-  "exclude": [
-    "dist"
-  ]
+    "jsxImportSource": "react",
+
+    "paths": {
+      "/src/*": ["./src/*"]
+    },
+    "baseUrl": ".",
+
+    "noImplicitAny": false
+  }
 }
