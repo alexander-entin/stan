@@ -1,9 +1,14 @@
 import { createStan, $event } from '/src/utils/stan'
+import * as Crud from '/src/drivers/crud'
+import * as LocalStorage from '/src/drivers/localStorage'
+import * as telefuncs from './$todo.telefunc'
 
 export type Todo = {
 	id: string,
 	text: string,
 	done?: boolean,
+	createdAt: number,
+	changedAt?: number,
 }
 
 export const filters = {
@@ -34,12 +39,14 @@ export let $todo = {
 		$todo.map[id] = {
 			id,
 			text,
+			createdAt: $event.now,
 		}
 		$todo.draft = ''
 	},
 	onToggle(id: string) {
 		const todo = $todo.map[id]
 		todo.done = !todo.done
+		todo.changedAt = $event.now
 	},
 	onDelete(id: string) {
 		delete $todo.map[id]
@@ -58,3 +65,13 @@ export let $todo = {
 
 $todo = createStan('todo', $todo)
 
+Crud.sync({
+	stanPath: 'todo.map',
+	filterPath: 'todo.filter',
+	crud: telefuncs,
+})
+
+LocalStorage.sync({
+	stanPath: 'todo',
+	filter: 'filter',
+})

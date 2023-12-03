@@ -1,6 +1,6 @@
 import { createStan, useStan } from '/src/utils/stan'
 
-export const $counter = createStan({
+export const $counter = createStan('counter', {
 	count: 0,
 	increment() {
 		$counter.count++
