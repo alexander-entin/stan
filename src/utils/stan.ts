@@ -1,24 +1,11 @@
-import { proxy, useSnapshot, subscribe, ref } from 'valtio'
+import { proxy, subscribe, snapshot, useSnapshot, ref } from 'valtio'
 import { subscribeKey, derive, watch, devtools } from 'valtio/utils'
 import { nanoid } from 'nanoid'
 
-export { subscribe, subscribeKey, ref, derive, watch }
+export { subscribe, subscribeKey, snapshot, derive, watch, ref }
 export const useStan = useSnapshot
 
-export function subscribePaths(proxy: object, paths: string, fn: ([[string]]) => void, ...rest): () => void
-export function subscribePaths(proxy: object, paths: [string], fn: ([[string]]) => void, ...rest): () => void
-export function subscribePaths(proxy: object, paths: [[string]], fn: ([[string]]) => void, ...rest): () => void
-export function subscribePaths(proxy, paths, fn, ...rest) {
-	if (typeof paths === 'string') paths = paths.split(',')
-	paths = paths.map(x => typeof x === 'string' ? x.split('.') : x)
-	return subscribe(proxy, ops => {
-		ops = ops.filter(([_, path]) => paths.find(p => p.every((x, i) => path[i] === x)))
-		ops.length && fn(ops)
-	}, ...rest)
-}
-
 export const $global = proxy({})
-
 export const $event = proxy({
 	id: '',
 	now: 0,
@@ -27,33 +14,26 @@ export const $event = proxy({
 })
 
 type Reactor = (...payload: any[]) => void
-const reactors = {} as { [type: string]: { [module: string]: Reactor } }
-
-if (import.meta.env.DEV) {
-	if (typeof window === 'object') {
-		Object.assign(window, {
-			$global,
-		})
-	}
-	devtools($global, { name: '$global', enabled: true })
-}
-
-export function createReactor<F extends Reactor>(
-	module: string, event: string, fn: F
-) {
+const reactors = {} as { [event: string]: { [module: string]: Reactor } }
+export function createReactor<F extends Reactor>(module: string, event: string, fn: F) {
 	let rs = reactors[event] ?? {}
 	reactors[event] = rs
 	let id = module ?? Object.keys(rs).length
 	rs[id] = fn
-	return dispatch(event) as F
+	return dispatch({ type: event }) as F
 }
 
-export const dispatch = (type: string) => (...payload) => {
-	$event.id = nanoid()
-	$event.now = Date.now()
-	$event.type = type
+export type EventMeta = {
+	type: string,
+	id: string,
+	now: number,
+}
+export const dispatch = ({ id, now, type }: Partial<EventMeta>) => (...payload: unknown[]) => {
+	$event.id = id ?? nanoid()
+	$event.now = now ?? Date.now()
+	$event.type = type!
 	$event.payload = payload
-	Object.values(reactors[type]).forEach(f => {
+	Object.values(reactors[type!]).forEach(f => {
 		console.warn(type, JSON.stringify(payload), { f })
 		f(...payload)
 	})
@@ -74,4 +54,24 @@ export function createStan<T extends object>(name: string, stan: T): T {
 	})
 	$global[name] = stan
 	return $global[name] as T
+}
+
+export type Paths = string | string[] | string[][]
+export type SubscribeCallback = (ops: unknown[][]) => void
+export function subscribePaths(proxy: object, paths: Paths, fn: SubscribeCallback, ...rest) {
+	if (typeof paths === 'string') paths = paths.split(',')
+	paths = paths.map(x => typeof x === 'string' ? x.split('.') : x)
+	return subscribe(proxy, ops => {
+		ops = ops.filter(([_, path]) =>
+			(paths as string[][]).find(p => p.every((x, i) => path[i] === x))
+		)
+		ops.length && fn(ops)
+	}, ...rest)
+}
+
+if (import.meta.env.DEV) {
+	if (typeof window === 'object') {
+		Object.assign(window, {	$global, $event, subscribe, derive, watch })
+		devtools($global, { name: '$global', enabled: true })
+	}
 }

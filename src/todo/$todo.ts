@@ -62,16 +62,17 @@ export let $todo = {
 		})
 	},
 }
-
 $todo = createStan('todo', $todo)
 
 Crud.sync({
-	stanPath: 'todo.map',
-	filterPath: 'todo.filter',
+	key: 'todo',
+	$sync: $todo.sync,
+	$stan: $todo.map,
 	crud: telefuncs,
 })
 
 LocalStorage.sync({
-	stanPath: 'todo',
-	filter: 'filter',
+	key: 'todo',
+	$stan: $todo,
+	paths: 'sync.filter',
 })
