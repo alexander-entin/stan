@@ -1,10 +1,9 @@
 export type Config = {
-	key: string,
 	$stan: object,
-	$sync: Config,
-	paths: string | string[] | string[][],
+	paths?: string | string[] | string[][],
+	$config?: Config,
 }
 
-export function sync({ key, $stan, $sync, paths }: Partial<Config>) {
+export function sync(key: string, { $stan, $config, paths }: Partial<Config>) {
 
 }

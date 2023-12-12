@@ -7,9 +7,9 @@ export const useStan = useSnapshot
 
 export const $global = proxy({})
 export const $event = proxy({
-	id: '',
-	now: 0,
-	type: '',
+	id: nanoid(),
+	at: Date.now(),
+	type: 'init',
 	payload: [] as any[],
 })
 
@@ -30,7 +30,7 @@ export type EventMeta = {
 }
 export const dispatch = ({ id, now, type }: Partial<EventMeta>) => (...payload: unknown[]) => {
 	$event.id = id ?? nanoid()
-	$event.now = now ?? Date.now()
+	$event.at = now ?? Date.now()
 	$event.type = type!
 	$event.payload = payload
 	Object.values(reactors[type!]).forEach(f => {
@@ -71,7 +71,7 @@ export function subscribePaths(proxy: object, paths: Paths, fn: SubscribeCallbac
 
 if (import.meta.env.DEV) {
 	if (typeof window === 'object') {
-		Object.assign(window, {	$global, $event, subscribe, derive, watch })
+		Object.assign(window, { $global, $event, proxy, subscribe, watch, derive, snapshot })
 		devtools($global, { name: '$global', enabled: true })
 	}
 }

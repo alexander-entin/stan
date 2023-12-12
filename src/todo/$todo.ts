@@ -1,4 +1,4 @@
-import { createStan, $event } from '/src/utils/stan'
+import { createStan, $event, derive } from '/src/utils/stan'
 import * as Crud from '/src/drivers/crud'
 import * as LocalStorage from '/src/drivers/localStorage'
 import * as telefuncs from './$todo.telefunc'
@@ -22,6 +22,12 @@ export let $todo = {
 	map: {} as { [id: string]: Todo },
 	draft: '',
 	filter: '' as TodoFilter,
+	sync: {
+		config: {
+			query: '' as TodoFilter,
+		},
+		state: {},
+	},
 	get filtered() {
 		return (
 			Object.values($todo.map)
@@ -39,14 +45,14 @@ export let $todo = {
 		$todo.map[id] = {
 			id,
 			text,
-			createdAt: $event.now,
+			createdAt: $event.at,
 		}
 		$todo.draft = ''
 	},
 	onToggle(id: string) {
 		const todo = $todo.map[id]
 		todo.done = !todo.done
-		todo.changedAt = $event.now
+		todo.changedAt = $event.at
 	},
 	onDelete(id: string) {
 		delete $todo.map[id]
@@ -64,15 +70,18 @@ export let $todo = {
 }
 $todo = createStan('todo', $todo)
 
-Crud.sync({
-	key: 'todo',
-	$sync: $todo.sync,
-	$stan: $todo.map,
-	crud: telefuncs,
+$todo.sync.config = derive({
+	query: get => get($todo).filter,
 })
 
-LocalStorage.sync({
-	key: 'todo',
+Crud.sync('todo', {
+	$stan: $todo.map,
+	crud: telefuncs,
+	$state: $todo.sync.state,
+	$config: $todo.sync.config,
+})
+
+LocalStorage.sync('todo-ui', {
 	$stan: $todo,
-	paths: 'sync.filter',
+	paths: 'filter',
 })
