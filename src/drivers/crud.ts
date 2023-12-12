@@ -1,10 +1,6 @@
 import { assocPath, indexBy } from 'rambda'
-import { $event, createReactor, dispatch, snapshot, subscribe, watch } from '../utils/stan'
+import { Entity, $sync, $event, createReactor, dispatch, snapshot, subscribe, watch } from '../utils/stan'
 
-export type Entity = {
-	id: string,
-	[key: string]: unknown,
-}
 export type Mutation = 'post' | 'patch' | 'del'
 
 export type EntityChanges = {
@@ -36,57 +32,29 @@ export type Crud = {
 	patch(patch: Entity),
 	del({ id, ids }: { id?: string, ids?: [string] })
 }
-export type SyncState = {
-	status?: string,
-	error?: unknown,
-	pull?: {
-		[reqId: string]: {
-			query: unknown,
-			at: number,
-			doneAt?: number,
-			data?: Record<string, Entity>,
-			error?: unknown,
-		},
-	},
-	push?: {
-		[reqId: string]: {
-			method: Mutation,
-			body: Entity,
-			prev: Entity,
-			at: number,
-			doneAt?: number,
-			data?: unknown,
-			error?: unknown,
-		},
-	}
-}
 export type Config = {
 	enabled?: boolean,
 	$stan: object,
 	crud: Crud,
 	query?: unknown,
-	$state: SyncState,
-	$config?: Partial<Config>,
 }
 function cleanupEffects(map: Record<string, any>, at: number) {
 	Object.entries(map).forEach(([id, { doneAt }]) => {
 		if (doneAt < at) delete map[id]
 	})
 }
-export function sync(key: string, config: Config) {
-	const { $stan, $state } = config
+export function sync(key: string, config: Config, $config: Partial<Config>) {
+	const { $stan } = config
+	$sync[key] = $sync[key] ?? { pull: {}, push: {} }
+	const $state = $sync[key]
 	watch(get => {
-		if (config.$config) {
-			Object.assign(config, snapshot(get(config.$config)))
-		}
+		Object.assign(config, get($config))
 		const { enabled = true, crud, query } = config
 		$state.status = 'ok'
-		$state.pull = $state.pull ?? {}
-		$state.push = $state.push ?? {}
 		cleanupEffects($state.pull, $event.at - 60e3)
 		if (enabled) {
 			$state.status = 'active'
-			const reqId = `get @${$event.at}`
+			const reqId = `get ?${query} @${$event.at}`
 			$state.pull[reqId] = {
 				query,
 				at: $event.at,
@@ -99,7 +67,6 @@ export function sync(key: string, config: Config) {
 	let prev = snapshot($stan)
 	createReactor('crud', `${key}.onPull`, ({ reqId, data, error }) => {
 		const req = $state.pull![reqId]
-		req.data = data
 		req.error = error
 		req.doneAt = $event.at
 		const reqIds = Object.keys($state.pull!)
@@ -125,7 +92,7 @@ export function sync(key: string, config: Config) {
 				body.id = id
 				const reqId = `${method} #${id} @${$event.at}`
 				$state.push![reqId] = {
-					method: method as Mutation,
+					method,
 					body,
 					prev: prev[id],
 					at: $event.at,
@@ -135,10 +102,10 @@ export function sync(key: string, config: Config) {
 				.catch(error => dispatch({ type: `${key}.onPush` })({ reqId, error }))
 			})
 		)
+		prev = snapshot($stan)
 	})
 	createReactor('crud', `${key}.onPush`, ({ reqId, data, error }) => {
 		const req = $state.push![reqId]
-		req.data = data
 		req.error = error
 		req.doneAt = $event.at
 		if (error) {

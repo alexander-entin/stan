@@ -2,9 +2,9 @@ import { useStan } from '../utils/stan'
 import { $todo } from './$todo'
 
 export function Todo({ id }) {
-	console.log('Todo.render', id)
 	const { map, onToggle, onDelete } = useStan($todo)
 	const todo = map[id]
+	console.log('Todo.render', todo)
 	return (
 		<li className={todo.done ? 'line-through' : ''}>
 			<input

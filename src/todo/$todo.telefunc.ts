@@ -21,6 +21,9 @@ export async function post(todo: Todo) {
 export async function patch(patch: Partial<Todo>) {
 	console.log('patch', patch)
 	await delay(1000)
+	if (todos[patch.id!].text === 'impossible' && patch.done) {
+		throw new Error(`Can't do that`)
+	}
 	deepmergeInto(todos[patch.id!], patch)
 }
 

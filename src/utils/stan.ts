@@ -2,16 +2,48 @@ import { proxy, subscribe, snapshot, useSnapshot, ref } from 'valtio'
 import { subscribeKey, derive, watch, devtools } from 'valtio/utils'
 import { nanoid } from 'nanoid'
 
-export { subscribe, subscribeKey, snapshot, derive, watch, ref }
+export { subscribe, subscribeKey, snapshot, watch, derive, ref }
 export const useStan = useSnapshot
 
-export const $global = proxy({})
-export const $event = proxy({
-	id: nanoid(),
-	at: Date.now(),
-	type: 'init',
-	payload: [] as any[],
+export type Entity = {
+	id: string,
+	[key: string]: unknown,
+}
+
+export type SyncState = {
+	status?: string,
+	error?: unknown,
+	pull: {
+		[reqId: string]: {
+			query: unknown,
+			at: number,
+			doneAt?: number,
+			error?: unknown,
+		},
+	},
+	push: {
+		[reqId: string]: {
+			method: string,
+			body: Entity,
+			prev: Entity,
+			at: number,
+			doneAt?: number,
+			error?: unknown,
+		},
+	}
+}
+
+export const $global = proxy({
+	sync: {} as Record<string, SyncState>,
+	event: {
+		id: nanoid(),
+		at: Date.now(),
+		type: 'init',
+		payload: [] as any[],
+	},
 })
+export const $sync = $global.sync
+export const $event = $global.event
 
 type Reactor = (...payload: any[]) => void
 const reactors = {} as { [event: string]: { [module: string]: Reactor } }
