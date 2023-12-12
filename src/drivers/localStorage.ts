@@ -4,11 +4,10 @@ import { subscribe, subscribePaths } from "../utils/stan"
 import { deepmergeInto } from 'deepmerge-ts'
 
 export type Config = {
-	$stan: object,
 	paths?: string | string[] | string[][],
 }
 
-export function sync(key: string, { $stan, paths }: Config) {
+export function sync(key: string, $stan: object, { paths }: Config = {}) {
 	if (typeof localStorage === 'undefined') return
 	if (typeof paths === 'string') {
 		paths = paths.split(',')

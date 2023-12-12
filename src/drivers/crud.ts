@@ -34,7 +34,6 @@ export type Crud = {
 }
 export type Config = {
 	enabled?: boolean,
-	$stan: object,
 	crud: Crud,
 	query?: unknown,
 }
@@ -43,8 +42,7 @@ function cleanupEffects(map: Record<string, any>, at: number) {
 		if (doneAt < at) delete map[id]
 	})
 }
-export function sync(key: string, config: Config, $config: Partial<Config>) {
-	const { $stan } = config
+export function sync(key: string, $stan: object, config: Config, $config: Partial<Config>) {
 	$sync[key] = $sync[key] ?? { pull: {}, push: {} }
 	const $state = $sync[key]
 	watch(get => {
