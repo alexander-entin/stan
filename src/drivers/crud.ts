@@ -57,9 +57,11 @@ export function sync(key: string, $stan: object, config: Config, $config: Partia
 				query,
 				at: $event.at,
 			}
-			crud.get(query)
-			.then(data => dispatch({ type: `${key}.onPull` })({ reqId, data }))
-			.catch(error => dispatch({ type: `${key}.onPull` })({ reqId, error }))
+			if (!import.meta.env.TEST) {
+				crud.get(query)
+				.then(data => dispatch({ type: `${key}.onPull` })({ reqId, data }))
+				.catch(error => dispatch({ type: `${key}.onPull` })({ reqId, error }))
+			}
 		}
 	})
 	let prev = snapshot($stan)
@@ -95,9 +97,11 @@ export function sync(key: string, $stan: object, config: Config, $config: Partia
 					prev: prev[id],
 					at: $event.at,
 				}
-				config.crud[method](body)
-				.then(data => dispatch({ type: `${key}.onPush` })({ reqId, data }))
-				.catch(error => dispatch({ type: `${key}.onPush` })({ reqId, error }))
+				if (!import.meta.env.TEST) {
+					config.crud[method](body)
+					.then(data => dispatch({ type: `${key}.onPush` })({ reqId, data }))
+					.catch(error => dispatch({ type: `${key}.onPush` })({ reqId, error }))
+				}
 			})
 		)
 		prev = snapshot($stan)

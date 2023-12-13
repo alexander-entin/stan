@@ -3,6 +3,7 @@ import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 // import 'virtual:unocss-devtools'
 
+import '/src/utils/record'
 import { Link } from '../components/Link'
 
 const menu = {

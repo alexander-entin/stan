@@ -1,0 +1,51 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`$todo > todo creation 1`] = `
+{
+  "draft": "",
+  "filter": "",
+  "filtered": [
+    {
+      "id": "2",
+      "text": "buy milk",
+    },
+  ],
+  "map": {
+    "2": {
+      "id": "2",
+      "text": "buy milk",
+    },
+  },
+  "onAdd": [Function],
+  "onDelete": [Function],
+  "onDeleteDone": [Function],
+  "onDraft": [Function],
+  "onFilter": [Function],
+  "onToggle": [Function],
+}
+`;
+
+exports[`todo creation 1`] = `
+{
+  "draft": "",
+  "filter": "",
+  "filtered": [
+    {
+      "id": 2,
+      "text": "buy milk",
+    },
+  ],
+  "map": {
+    "2": {
+      "id": 2,
+      "text": "buy milk",
+    },
+  },
+  "onAdd": [Function],
+  "onDelete": [Function],
+  "onDeleteDone": [Function],
+  "onDraft": [Function],
+  "onFilter": [Function],
+  "onToggle": [Function],
+}
+`;

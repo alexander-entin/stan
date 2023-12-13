@@ -6,15 +6,16 @@
 	"scripts": {
 		"dev": "hattip serve ./hattip-entry.ts --client",
 		"build": "hattip build ./hattip-entry.ts --client",
-		"lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+		"lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+		"test": "vitest"
 	},
 	"dependencies": {
-		"@hattip/vite": "^0.0.35",
-		"@iconify-json/mdi": "^1.1.60",
 		"@hattip/core": "^0.0.35",
 		"@hattip/router": "^0.0.35",
-		"@unocss/reset": "^0.58.0",
+		"@hattip/vite": "^0.0.35",
+		"@iconify-json/mdi": "^1.1.60",
 		"@unocss/preset-icons": "^0.58.0",
+		"@unocss/reset": "^0.58.0",
 		"@unocss/transformer-attributify-jsx": "^0.58.0",
 		"@vitejs/plugin-react": "^4.2.1",
 		"cross-fetch": "^4.0.0",
@@ -26,8 +27,8 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"telefunc": "^0.1.64",
-		"unocss-preset-daisy": "^7.0.0",
 		"unocss": "^0.58.0",
+		"unocss-preset-daisy": "^7.0.0",
 		"unocss-preset-fluid": "^0.1.2",
 		"valtio": "^1.12.1",
 		"vike": "^0.4.150",
@@ -42,7 +43,8 @@
 		"@typescript-eslint/parser": "^6.13.2",
 		"eslint": "^8.55.0",
 		"eslint-config-react-app": "^7.0.1",
-		"typescript": "^5.3.3"
+		"typescript": "^5.3.3",
+		"vitest": "^1.0.4"
 	},
 	"imports": {
 		"/src/*": "./*.ts"
