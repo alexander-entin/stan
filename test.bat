@@ -1,1 +1,1 @@
-start "dev" /max pnpm test
+start "test" /max pnpm test

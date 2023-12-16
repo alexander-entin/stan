@@ -64,7 +64,7 @@ LocalStorage.sync('todo-ui', $todo, {
 	paths: 'filter',
 })
 
-// LocalStorage.sync('todo', $todo.map)
+// LocalStorage.sync('todo-local', $todo.map)
 
 Crud.sync('todo', $todo.map, {
 	crud: telefuncs,

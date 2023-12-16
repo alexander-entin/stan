@@ -71,7 +71,6 @@ export const dispatch = ({ id, now, type }: Partial<EventMeta>) => (...payload: 
 	})
 }
 
-const testMeta = new WeakMap()
 export function createStan<T extends object>(name: string, stan: T): T {
 	Object.keys(stan).forEach(k => {
 		let d = Object.getOwnPropertyDescriptor(stan, k) || {}

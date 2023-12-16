@@ -13,13 +13,13 @@ export function entityChanges(ops: any[][]): EntityChanges {
 		if (path.length === 1) {
 			return assocPath(
 				[op === 'set' ? 'post' : 'del', String(path[0])],
-				value,
+				snapshot(value),
 				changes,
 			)
 		} else {
 			return assocPath(
 				['patch', ...path],
-				op === 'set' ? value : undefined,
+				op === 'set' ? snapshot(value) : undefined,
 				changes,
 			)
 		}

@@ -5,9 +5,11 @@
 	"type": "module",
 	"scripts": {
 		"dev": "hattip serve ./hattip-entry.ts --client",
+		"test": "vitest",
+		"cosmos": "cosmos",
+		"cosmos-export": "cosmos-export",
 		"build": "hattip build ./hattip-entry.ts --client",
-		"lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-		"test": "vitest"
+		"lint": "eslint --ext .js,.jsx,.ts,.tsx ."
 	},
 	"dependencies": {
 		"@hattip/core": "^0.0.35",
@@ -43,6 +45,8 @@
 		"@typescript-eslint/parser": "^6.13.2",
 		"eslint": "^8.55.0",
 		"eslint-config-react-app": "^7.0.1",
+		"react-cosmos": "6.0.0-beta.8",
+		"react-cosmos-plugin-vite": "6.0.0-beta.8",
 		"typescript": "^5.3.3",
 		"vitest": "^1.0.4"
 	},

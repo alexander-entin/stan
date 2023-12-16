@@ -12,7 +12,7 @@ import presetIcons from '@unocss/preset-icons'
 
 export default defineConfig({
 	plugins: [
-		hattip(),
+		// hattip(),
 		unocss({
 			transformers: [
 				transformerAttributifyJsx(),
@@ -32,8 +32,8 @@ export default defineConfig({
 			],
 		}),
 		react(),
-		ssr(),
-		telefunc(),
+		// ssr(),
+		// telefunc(),
 	],
 	resolve: {
 		alias: {

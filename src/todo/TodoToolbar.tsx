@@ -14,7 +14,7 @@ export function TodoToolbar() {
 		<button
 			className='btn'
 			onClick={() => onDeleteDone()}
-			disabled={!Object.values(map).some(x => x.done)}
+			disabled={!Object.keys(map).some(k => map[k].done)}
 		>
 			Remove completed
 		</button>

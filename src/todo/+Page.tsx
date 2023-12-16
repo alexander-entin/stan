@@ -1,13 +1,16 @@
 import { TodoList } from './TodoList'
 import { NewTodoForm } from './NewTodoForm'
 import { TodoToolbar } from './TodoToolbar'
+import { ClientOnly } from '../components/ClientOnly'
 
 export default function Page() {
 	console.log('/todo render')
 	return (<>
 		<h1>To-do List</h1>
 		<NewTodoForm />
-		<TodoToolbar />
-		<TodoList />
+		<ClientOnly>
+			<TodoToolbar />
+			<TodoList />
+		</ClientOnly>
 	</>)
 }
