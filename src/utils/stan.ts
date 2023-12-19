@@ -58,15 +58,16 @@ export function createReactor<F extends Reactor>(module: string, event: string, 
 export type EventMeta = {
 	type: string,
 	id: string,
-	now: number,
+	at: number,
 }
-export const dispatch = ({ id, now, type }: Partial<EventMeta>) => (...payload: unknown[]) => {
+export const dispatch = ({ id, at, type }: Partial<EventMeta>) => (...payload: unknown[]) => {
 	$event.id = id ?? nanoid()
-	$event.at = now ?? Date.now()
+	$event.at = at ?? Date.now()
 	$event.type = type!
 	$event.payload = payload
+	console.warn(type, JSON.stringify(payload))
 	Object.values(reactors[type!]).forEach(f => {
-		console.warn(type, JSON.stringify(payload), { f })
+		// console.warn(type, JSON.stringify(payload), { f })
 		f(...payload)
 	})
 }

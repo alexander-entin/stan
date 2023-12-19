@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 import { hattip } from "@hattip/vite"
@@ -10,9 +12,14 @@ import { presetFluid } from 'unocss-preset-fluid'
 import { presetDaisy } from 'unocss-preset-daisy'
 import presetIcons from '@unocss/preset-icons'
 
+const test = process.env.VITEST
+const story = process.env.npm_lifecycle_event === 'storybook'
+const sandbox = test || story
+console.log({ test, story, sandbox })
+
 export default defineConfig({
 	plugins: [
-		hattip(),
+		!sandbox && hattip(),
 		unocss({
 			transformers: [
 				transformerAttributifyJsx(),
@@ -32,7 +39,7 @@ export default defineConfig({
 			],
 		}),
 		react(),
-		ssr(),
+		!sandbox && ssr(),
 		telefunc(),
 	],
 	resolve: {

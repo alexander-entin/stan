@@ -1,13 +1,16 @@
-import { $todo } from './$todo'
 import { test } from '../utils/test'
+import Page from './+Page'
+import { NewTodoForm } from './NewTodoForm'
+import { TodoToolbar } from './TodoToolbar'
+import { TodoList } from './TodoList'
 
 const cases = {
 	'todo creation': {
 		events: [
-			['todo.onDraft', 'buy milk'],
-			['todo.onAdd'],
+			{ type: 'todo.onDraft', data: 'buy milk' },
+			{ type: 'todo.onAdd' },
 		]
 	}
 }
 
-test($todo, cases)
+test(cases, { Page, NewTodoForm, TodoToolbar, TodoList })

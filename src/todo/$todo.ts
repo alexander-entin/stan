@@ -66,8 +66,8 @@ LocalStorage.sync('todo-ui', $todo, {
 
 // LocalStorage.sync('todo-local', $todo.map)
 
-Crud.sync('todo', $todo.map, {
-	crud: telefuncs,
-}, derive({
-	query: get => get($todo).filter,
-}))
+// Crud.sync('todo', $todo.map, {
+// 	crud: telefuncs,
+// }, derive({
+// 	query: get => get($todo).filter,
+// }))

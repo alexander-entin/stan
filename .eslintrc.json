@@ -2,7 +2,10 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "extends": [
-    "react-app"
+    "react-app",
+    "plugin:storybook/recommended",
+    "plugin:storybook/recommended",
+    "plugin:storybook/recommended"
   ],
   "plugins": [],
   "parserOptions": {

@@ -1,1 +1,1 @@
-start "story" /max pnpm cosmos
+start "story" /max pnpm storybook
