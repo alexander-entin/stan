@@ -13,13 +13,13 @@ import { presetDaisy } from 'unocss-preset-daisy'
 import presetIcons from '@unocss/preset-icons'
 
 const test = process.env.VITEST
-const story = process.env.npm_lifecycle_event === 'storybook'
-const sandbox = test || story
-console.log({ test, story, sandbox })
+const story = process.env.npm_lifecycle_event === 'storybook' || process.env.npm_lifecycle_event === 'cosmos'
+const integrated = !test && !story
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+	mode: test ? 'test' : story ? 'story' : mode,
 	plugins: [
-		!sandbox && hattip(),
+		integrated && hattip(),
 		unocss({
 			transformers: [
 				transformerAttributifyJsx(),
@@ -39,7 +39,7 @@ export default defineConfig({
 			],
 		}),
 		react(),
-		!sandbox && ssr(),
+		integrated && ssr(),
 		telefunc(),
 	],
 	resolve: {
@@ -47,4 +47,10 @@ export default defineConfig({
 			"/src": '/src',
 		},
 	},
-})
+	define: {
+		'import.meta.vitest': 'undefined',
+	},
+	test: {
+		includeSource: ['src/**/*.{js,ts,jsx,tsx}'],
+	},
+}))

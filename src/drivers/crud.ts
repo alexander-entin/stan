@@ -1,5 +1,5 @@
 import { assocPath, indexBy } from 'rambda'
-import { Entity, $sync, $event, createReactor, dispatch, snapshot, subscribe, watch } from '../utils/stan'
+import { Entity, integrated, $sync, $event, createReactor, dispatch, snapshot, subscribe, watch } from '../utils/stan'
 
 export type Mutation = 'post' | 'patch' | 'del'
 
@@ -43,6 +43,7 @@ function cleanupEffects(map: Record<string, any>, at: number) {
 	})
 }
 export function sync(key: string, $stan: object, config: Config, $config: Partial<Config>) {
+	if (!integrated()) return
 	$sync[key] = $sync[key] ?? { pull: {}, push: {} }
 	const $state = $sync[key]
 	watch(get => {

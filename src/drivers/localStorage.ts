@@ -1,6 +1,6 @@
 import { path, assocPath } from 'rambda'
 
-import { createReactor, dispatch, subscribe, subscribePaths } from "../utils/stan"
+import { createReactor, dispatch, integrated, subscribe, subscribePaths } from "../utils/stan"
 import { deepmergeInto } from 'deepmerge-ts'
 
 export type Config = {
@@ -9,6 +9,7 @@ export type Config = {
 }
 
 export function sync(key: string, $stan: object, { paths, async }: Config = {}) {
+	if (!integrated()) return
 	if (typeof localStorage === 'undefined') return
 	if (typeof paths === 'string') {
 		paths = paths.split(',')

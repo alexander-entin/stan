@@ -35,15 +35,14 @@ export type SyncState = {
 
 export const $global = proxy({
 	sync: {} as Record<string, SyncState>,
-	event: {
-		id: nanoid(),
-		at: Date.now(),
-		type: 'init',
-		payload: [] as any[],
-	},
 })
 export const $sync = $global.sync
-export const $event = $global.event
+export const $event = proxy({
+	id: nanoid(),
+	at: Date.now(),
+	type: 'init',
+	data: [] as any[],
+})
 
 type Reactor = (...payload: any[]) => void
 const reactors = {} as { [event: string]: { [module: string]: Reactor } }
@@ -60,15 +59,34 @@ export type EventMeta = {
 	id: string,
 	at: number,
 }
+export type Event = EventMeta & { data?: any[] }
+
+let initial
 export const dispatch = ({ id, at, type }: Partial<EventMeta>) => (...payload: unknown[]) => {
+	initial ||= snapshot($global)
 	$event.id = id ?? nanoid()
 	$event.at = at ?? Date.now()
 	$event.type = type!
-	$event.payload = payload
+	$event.data = payload
 	console.warn(type, JSON.stringify(payload))
 	Object.values(reactors[type!]).forEach(f => {
 		// console.warn(type, JSON.stringify(payload), { f })
 		f(...payload)
+	})
+}
+
+export function reset(init = initial) {
+	if (!init) return
+	Object.entries($global).forEach(([stanK, stan]) => {
+		Object.keys(stan).forEach(k => {
+			let d = Object.getOwnPropertyDescriptor(stan, k) || {}
+			let virtual = d.get || d.set
+			if (virtual || typeof stan[k] === 'function') return
+			delete stan[k]
+			if (k in init[stanK]) {
+				stan[k] = structuredClone(init[stanK][k])
+			}
+		})
 	})
 }
 
@@ -102,9 +120,26 @@ export function subscribePaths(proxy: object, paths: Paths, fn: SubscribeCallbac
 	}, ...rest)
 }
 
+export function integrated() {
+	return import.meta.env.MODE !== 'test' && import.meta.env.MODE !== 'story'
+}
+
 if (import.meta.env.DEV) {
 	if (typeof window === 'object') {
-		Object.assign(window, { $global, $event, proxy, subscribe, watch, derive, snapshot })
+		Object.assign(window, { $global, $event, proxy, subscribe, watch, derive, snapshot, reset })
 		devtools($global, { name: '$global', enabled: true })
+		setTimeout(() => {
+			let initial
+			let events = [] as Event[]
+			function story() {
+				console.log({ initial, events })
+				initial = snapshot($global)
+				events = []
+			}
+			subscribe($event, () => {
+				events.push(snapshot($event) as Event)
+			})
+			window['story'] = story
+		}, 1)
 	}
 }

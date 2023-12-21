@@ -60,9 +60,9 @@ export let $todo = {
 }
 $todo = createStan('todo', $todo)
 
-LocalStorage.sync('todo-ui', $todo, {
-	paths: 'filter',
-})
+// LocalStorage.sync('todo-ui', $todo, {
+// 	paths: 'filter',
+// })
 
 // LocalStorage.sync('todo-local', $todo.map)
 
@@ -70,4 +70,18 @@ LocalStorage.sync('todo-ui', $todo, {
 // 	crud: telefuncs,
 // }, derive({
 // 	query: get => get($todo).filter,
+// }))
+
+// Rest.sync('todo', $todo.map, {
+// 	base: 'https://example.com/api/v1/',
+// 	poll: 10e3,
+// }, derive({
+// 	query: get => get($todo).filter,
+// }))
+
+// PouchDB.sync('todo', $todo.map, {
+// 	local: 'todo',
+// 	// remote: 'https://example.com/db/todo',
+// }, derive({
+// 	filter: get => get($todo).filter,
 // }))
