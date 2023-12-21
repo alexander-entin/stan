@@ -7,4 +7,5 @@
 !.yarn/versions
 
 build
+coverage
 node_modules

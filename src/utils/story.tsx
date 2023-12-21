@@ -54,7 +54,7 @@ export function tell(Component: FC, story) {
 	return fs
 }
 
-export type DeepShallow = { [kind in 'deep' | 'shallow']?: Record<string, FC> }
+export type DeepShallow = { [method in 'deep' | 'shallow']?: Record<string, FC> }
 export function test(story, components: DeepShallow, { it }) {
 	let { initial = {}, events } = normalize(story)
 	deepmergeInto($global, initial)

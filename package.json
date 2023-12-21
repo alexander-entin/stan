@@ -5,7 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "hattip serve ./hattip-entry.ts --client",
-		"test": "vitest",
+		"test": "vitest --ui",
+		"coverage": "vitest run --coverage --ui",
 		"build": "hattip build ./hattip-entry.ts --client",
 		"lint": "eslint --ext .js,.jsx,.ts,.tsx .",
 		"cosmos": "cosmos",
@@ -44,6 +45,8 @@
 		"@types/react-dom": "^18.2.17",
 		"@typescript-eslint/eslint-plugin": "^6.13.2",
 		"@typescript-eslint/parser": "^6.13.2",
+		"@vitest/coverage-v8": "^1.1.0",
+		"@vitest/ui": "^1.1.0",
 		"deep-object-diff": "^1.1.9",
 		"eslint": "^8.55.0",
 		"eslint-config-react-app": "^7.0.1",
