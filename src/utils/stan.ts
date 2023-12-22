@@ -1,6 +1,7 @@
 import { proxy, subscribe, snapshot, useSnapshot, ref } from 'valtio'
 import { subscribeKey, derive, watch, devtools } from 'valtio/utils'
 import { nanoid } from 'nanoid'
+import { path } from 'rambda'
 
 export { subscribe, subscribeKey, snapshot, watch, derive, ref }
 export const useStan = useSnapshot
@@ -63,7 +64,9 @@ export type Event = EventMeta & { data?: any[] }
 
 let initial
 export const dispatch = ({ id, at, type }: Partial<EventMeta>) => (...payload: unknown[]) => {
-	initial ||= snapshot($global)
+	if (import.meta.env.DEV && typeof window === 'object') {
+		initial ||= snapshot($global)
+	}
 	$event.id = id ?? nanoid()
 	$event.at = at ?? Date.now()
 	$event.type = type!
@@ -73,28 +76,21 @@ export const dispatch = ({ id, at, type }: Partial<EventMeta>) => (...payload: u
 		// console.warn(type, JSON.stringify(payload), { f })
 		f(...payload)
 	})
+	console.warn(snapshot($global))
 }
 
-export function reset(init = initial) {
-	if (!init) return
-	Object.entries($global).forEach(([stanK, stan]) => {
-		Object.keys(stan).forEach(k => {
-			let d = Object.getOwnPropertyDescriptor(stan, k) || {}
-			let virtual = d.get || d.set
-			if (virtual || typeof stan[k] === 'function') return
-			delete stan[k]
-			if (k in init[stanK]) {
-				stan[k] = structuredClone(init[stanK][k])
-			}
-		})
-	})
+function isVirtualProp(o, k) {
+	let d = Object.getOwnPropertyDescriptor(o, k) || {}
+	return d.get || d.set
+}
+
+function isDataProp(o, k) {
+	return !isVirtualProp(o, k) && typeof o[k] !== 'function'
 }
 
 export function createStan<T extends object>(name: string, stan: T): T {
 	Object.keys(stan).forEach(k => {
-		let d = Object.getOwnPropertyDescriptor(stan, k) || {}
-		let virtual = d.get || d.set
-		if (!virtual
+		if (!isVirtualProp(stan, k)
 			&& typeof stan[k] === 'function'
 			&& k.startsWith('on')
 			&& k[2] === k[2]?.toUpperCase()
@@ -105,6 +101,37 @@ export function createStan<T extends object>(name: string, stan: T): T {
 	})
 	$global[name] = stan
 	return $global[name] as T
+}
+
+function dive(o, f, p = [] as string[]) {
+	Object.keys(o).forEach(k => {
+		if (!isDataProp(o, k)) return
+		f(o, k, p)
+		if (typeof o[k] === 'object') {
+			dive(o[k], f, [...p, k])
+		}
+	})
+}
+
+export function reset($stan, snap = initial) {
+	if (!snap) return
+	dive(snap, (s, k, p) => {
+		const $ = path(p, $stan)
+		if (!isDataProp($, k)) return
+		if (typeof s[k] !== 'object' || typeof $[k] !== 'object') {
+			$[k] = structuredClone(s[k])
+		}
+	})
+	dive($stan, ($, k, p) => {
+		const s = path(p, snap)
+		if (!(k in s)) {
+			delete $[k]
+		}
+	})
+}
+
+export function integrated() {
+	return import.meta.env.MODE !== 'test' && import.meta.env.MODE !== 'story'
 }
 
 export type Paths = string | string[] | string[][]
@@ -120,26 +147,42 @@ export function subscribePaths(proxy: object, paths: Paths, fn: SubscribeCallbac
 	}, ...rest)
 }
 
-export function integrated() {
-	return import.meta.env.MODE !== 'test' && import.meta.env.MODE !== 'story'
-}
+if (import.meta.env.DEV && typeof window === 'object') {
+	Object.assign(window, { $global, $event, proxy, subscribe, watch, derive, snapshot, reset })
+	devtools($global, { name: '$global', enabled: true })
 
-if (import.meta.env.DEV) {
-	if (typeof window === 'object') {
-		Object.assign(window, { $global, $event, proxy, subscribe, watch, derive, snapshot, reset })
-		devtools($global, { name: '$global', enabled: true })
-		setTimeout(() => {
-			let initial
-			let events = [] as Event[]
-			function story() {
-				console.log({ initial, events })
-				initial = snapshot($global)
-				events = []
+	let snap
+	let events = [] as Event[]
+	function story() {
+		const indent = snap ? '\t' : ''
+		let json = ['[', ...events.map(({ type, data = [] }) => {
+			let rest = [data]
+			if (data.length === 0) {
+				rest = []
+			} else if (data.length === 1 && !Array.isArray(data[0])) {
+				rest = data
 			}
-			subscribe($event, () => {
-				events.push(snapshot($event) as Event)
-			})
-			window['story'] = story
-		}, 1)
+			return `\t${JSON.stringify([type, ...rest])},`
+		}), ']'].join(`\n${indent}`)
+		if (snap) {
+			let init = JSON.stringify(snap, null, '\t')
+			init = init.split('\n').map((r, i) => `${i ? '\t' : ''}${r}`).join('\n')
+			json = `{\n\tinitial: ${init},\n\tevents: ${json}\n}`
+		}
+		const val = snap ? { initial: snap, events } : events
+		events = []
+		snap = snapshot($global)
+		dive(snap, (s, k, p) => {
+			const $ = path(p, $global)
+			if (!isDataProp($, k)) {
+				delete s[k]
+			}
+		})
+		console.log(json)
+		return val
 	}
+	subscribe($event, () => {
+		events.push(snapshot($event) as Event)
+	})
+	window['story'] = story
 }

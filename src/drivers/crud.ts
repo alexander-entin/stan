@@ -43,7 +43,6 @@ function cleanupEffects(map: Record<string, any>, at: number) {
 	})
 }
 export function sync(key: string, $stan: object, config: Config, $config: Partial<Config>) {
-	if (!integrated()) return
 	$sync[key] = $sync[key] ?? { pull: {}, push: {} }
 	const $state = $sync[key]
 	watch(get => {
@@ -58,7 +57,7 @@ export function sync(key: string, $stan: object, config: Config, $config: Partia
 				query,
 				at: $event.at,
 			}
-			if (!import.meta.env.TEST) {
+			if (integrated()) {
 				crud.get(query)
 				.then(data => dispatch({ type: `${key}.onPull` })({ reqId, data }))
 				.catch(error => dispatch({ type: `${key}.onPull` })({ reqId, error }))
@@ -98,7 +97,7 @@ export function sync(key: string, $stan: object, config: Config, $config: Partia
 					prev: prev[id],
 					at: $event.at,
 				}
-				if (!import.meta.env.TEST) {
+				if (integrated()) {
 					config.crud[method](body)
 					.then(data => dispatch({ type: `${key}.onPush` })({ reqId, data }))
 					.catch(error => dispatch({ type: `${key}.onPush` })({ reqId, error }))

@@ -30,10 +30,10 @@ export function normalize(story) {
 
 export function Story({ initial, events = [] as Event[], children }) {
 	useEffect(() => {
-		reset(initial)
+		reset($global, initial)
 		events.forEach(event => {
 			const { data, ...meta } = event
-			dispatch(meta)(...data!)
+			dispatch(meta)(...structuredClone(data)!)
 		})
 	}, [events])
 	return children

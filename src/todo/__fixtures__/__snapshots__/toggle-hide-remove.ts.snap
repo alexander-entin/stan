@@ -1,0 +1,1631 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`1. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
+  },
+}
+`;
+
+exports[`1. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value="read "Out of the Tar Pit" by Ben Moseley and Peter Marks"
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`1. todo-local.onPull > $stan changes 1`] = `
+{
+  "todo": {
+    "filtered": {
+      "0": {
+        "done": false,
+        "id": "pqRxsRzfIvfPhyL1Ol7cb",
+        "text": "read",
+      },
+      "1": {
+        "done": true,
+        "id": "XONBkwGngyqr60paySNfs",
+        "text": "buy milk",
+      },
+      "2": {
+        "id": "yFtPqsesTs2Q6IcJS3-cG",
+        "text": "buy meat",
+      },
+    },
+    "map": {
+      "XONBkwGngyqr60paySNfs": {
+        "done": false,
+        "id": "XONBkwGngyqr60paySNfs",
+        "text": "buy milk",
+      },
+      "pqRxsRzfIvfPhyL1Ol7cb": {
+        "done": false,
+        "id": "pqRxsRzfIvfPhyL1Ol7cb",
+        "text": "read",
+      },
+      "yFtPqsesTs2Q6IcJS3-cG": {
+        "id": "yFtPqsesTs2Q6IcJS3-cG",
+        "text": "buy meat",
+      },
+    },
+  },
+}
+`;
+
+exports[`1. todo-local.onPull > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`1. todo-ui.onPull > $stan changes 1`] = `{}`;
+
+exports[`1. todo-ui.onPull > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`2. todo.onAdd > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "",
+    "filtered": {
+      "0": {
+        "id": "#1580601600001",
+        "text": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
+      },
+    },
+    "map": {
+      "#1580601600001": {
+        "id": "#1580601600001",
+        "text": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
+      },
+    },
+  },
+}
+`;
+
+exports[`2. todo.onAdd > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      read "Out of the Tar Pit" by Ben Moseley and Peter Marks
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`2. todo.onToggle > $stan changes 1`] = `
+{
+  "todo": {
+    "map": {
+      "XONBkwGngyqr60paySNfs": {
+        "done": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`2. todo.onToggle > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      read
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+    <li
+      className="line-through"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy milk
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy meat
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`2. todo-local.onPull > $stan changes 1`] = `
+{
+  "todo": {
+    "filtered": {
+      "0": {
+        "done": false,
+        "id": "pqRxsRzfIvfPhyL1Ol7cb",
+        "text": "read",
+      },
+      "1": {
+        "done": true,
+        "id": "XONBkwGngyqr60paySNfs",
+        "text": "buy milk",
+      },
+      "2": {
+        "id": "yFtPqsesTs2Q6IcJS3-cG",
+        "text": "buy meat",
+      },
+    },
+    "map": {
+      "XONBkwGngyqr60paySNfs": {
+        "done": false,
+        "id": "XONBkwGngyqr60paySNfs",
+        "text": "buy milk",
+      },
+      "pqRxsRzfIvfPhyL1Ol7cb": {
+        "done": false,
+        "id": "pqRxsRzfIvfPhyL1Ol7cb",
+        "text": "read",
+      },
+      "yFtPqsesTs2Q6IcJS3-cG": {
+        "id": "yFtPqsesTs2Q6IcJS3-cG",
+        "text": "buy meat",
+      },
+    },
+  },
+}
+`;
+
+exports[`2. todo-local.onPull > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      read
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy milk
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy meat
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`3. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "buy milk",
+    "filtered": {
+      "0": undefined,
+    },
+  },
+}
+`;
+
+exports[`3. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value="buy milk"
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul />,
+]
+`;
+
+exports[`3. todo.onFilter > $stan changes 1`] = `
+{
+  "todo": {
+    "filter": "!done",
+    "filtered": {
+      "1": {
+        "done": undefined,
+        "id": "yFtPqsesTs2Q6IcJS3-cG",
+        "text": "buy meat",
+      },
+      "2": undefined,
+    },
+  },
+}
+`;
+
+exports[`3. todo.onFilter > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`3. todo.onToggle > $stan changes 1`] = `
+{
+  "todo": {
+    "map": {
+      "XONBkwGngyqr60paySNfs": {
+        "done": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`3. todo.onToggle > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`4. todo.onAdd > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "",
+    "filtered": {
+      "0": {
+        "id": "#1580601600001",
+        "text": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
+      },
+      "1": {
+        "id": "#1580601600003",
+        "text": "buy milk",
+      },
+    },
+    "map": {
+      "#1580601600003": {
+        "id": "#1580601600003",
+        "text": "buy milk",
+      },
+    },
+  },
+}
+`;
+
+exports[`4. todo.onAdd > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`4. todo.onDeleteDone > $stan changes 1`] = `
+{
+  "todo": {
+    "map": {
+      "XONBkwGngyqr60paySNfs": undefined,
+    },
+  },
+}
+`;
+
+exports[`4. todo.onDeleteDone > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={true}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      read
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy meat
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`4. todo.onFilter > $stan changes 1`] = `
+{
+  "todo": {
+    "filter": "!done",
+    "filtered": {
+      "1": {
+        "done": undefined,
+        "id": "yFtPqsesTs2Q6IcJS3-cG",
+        "text": "buy meat",
+      },
+      "2": undefined,
+    },
+  },
+}
+`;
+
+exports[`4. todo.onFilter > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={true}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      read
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy meat
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`5. todo.onAdd > $stan changes 1`] = `{}`;
+
+exports[`5. todo.onAdd > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      read "Out of the Tar Pit" by Ben Moseley and Peter Marks
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy milk
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`5. todo.onDeleteDone > $stan changes 1`] = `
+{
+  "todo": {
+    "map": {
+      "XONBkwGngyqr60paySNfs": undefined,
+    },
+  },
+}
+`;
+
+exports[`5. todo.onDeleteDone > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`5. todo.onFilter > $stan changes 1`] = `
+{
+  "todo": {
+    "filter": "",
+  },
+}
+`;
+
+exports[`5. todo.onFilter > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`6. todo.onDelete > $stan changes 1`] = `
+{
+  "todo": {
+    "filtered": {
+      "1": undefined,
+    },
+    "map": {
+      "yFtPqsesTs2Q6IcJS3-cG": undefined,
+    },
+  },
+}
+`;
+
+exports[`6. todo.onDelete > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      read
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`6. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": " ",
+    "filtered": {
+      "0": undefined,
+      "1": undefined,
+    },
+  },
+}
+`;
+
+exports[`6. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=" "
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul />,
+]
+`;
+
+exports[`6. todo.onFilter > $stan changes 1`] = `
+{
+  "todo": {
+    "filter": "",
+  },
+}
+`;
+
+exports[`6. todo.onFilter > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      read
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy meat
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`7. todo.onAdd > $stan changes 1`] = `{}`;
+
+exports[`7. todo.onAdd > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=" "
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`7. todo.onDelete > $stan changes 1`] = `
+{
+  "todo": {
+    "filtered": {
+      "1": undefined,
+    },
+    "map": {
+      "yFtPqsesTs2Q6IcJS3-cG": undefined,
+    },
+  },
+}
+`;
+
+exports[`7. todo.onDelete > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`8. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "b",
+    "filtered": {
+      "0": {
+        "id": "#1580601600003",
+        "text": "buy milk",
+      },
+    },
+  },
+}
+`;
+
+exports[`8. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value="b"
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy milk
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`9. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "bu",
+  },
+}
+`;
+
+exports[`9. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value="bu"
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy milk
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`10. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "buy",
+  },
+}
+`;
+
+exports[`10. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value="buy"
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`11. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "buy ",
+  },
+}
+`;
+
+exports[`11. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value="buy "
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy milk
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`12. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "buy m",
+  },
+}
+`;
+
+exports[`12. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value="buy m"
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul>
+    <li
+      className=""
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      buy milk
+       
+      <button
+        onClick={[Function]}
+      >
+        ☠
+      </button>
+    </li>
+  </ul>,
+]
+`;
+
+exports[`13. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "buy me",
+    "filtered": {
+      "0": undefined,
+    },
+  },
+}
+`;
+
+exports[`13. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value="buy me"
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
+exports[`14. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "buy mea",
+  },
+}
+`;
+
+exports[`14. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value="buy mea"
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul />,
+]
+`;
+
+exports[`15. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "buy meat",
+  },
+}
+`;
+
+exports[`15. todo.onDraft > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value="buy meat"
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox"
+  />,
+  "Hide completed",
+  <button
+    className="btn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Remove completed
+  </button>,
+  <ul />,
+]
+`;
+
+exports[`16. todo.onAdd > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "",
+    "filtered": {
+      "0": {
+        "id": "#1580601600001",
+        "text": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
+      },
+      "1": {
+        "id": "#1580601600003",
+        "text": "buy milk",
+      },
+      "2": {
+        "id": "#1580601600015",
+        "text": "buy meat",
+      },
+    },
+    "map": {
+      "#1580601600015": {
+        "id": "#1580601600015",
+        "text": "buy meat",
+      },
+    },
+  },
+}
+`;
+
+exports[`16. todo.onAdd > Page (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;

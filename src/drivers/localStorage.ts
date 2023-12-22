@@ -1,14 +1,19 @@
 import { path, assocPath } from 'rambda'
+import { deepmergeInto } from 'deepmerge-ts'
 
 import { createReactor, dispatch, integrated, subscribe, subscribePaths } from "../utils/stan"
-import { deepmergeInto } from 'deepmerge-ts'
 
 export type Config = {
 	paths?: string | string[] | string[][],
-	async?: boolean,
+	sync?: boolean,
 }
 
-export function sync(key: string, $stan: object, { paths, async }: Config = {}) {
+export function sync(key: string, $stan: object, { paths, sync }: Config = {}) {
+	if (!sync) {
+		createReactor('crud', `${key}.onPull`, val => {
+			deepmergeInto($stan, val)
+		})
+	}
 	if (!integrated()) return
 	if (typeof localStorage === 'undefined') return
 	if (typeof paths === 'string') {
@@ -17,13 +22,10 @@ export function sync(key: string, $stan: object, { paths, async }: Config = {}) 
 	const json = localStorage[key]
 	if (json) {
 		const val = JSON.parse(json)
-		if (async) {
-			setTimeout(() => dispatch({ type: `${key}.onPull` })(val), 1)
-			createReactor('crud', `${key}.onPull`, val => {
-				deepmergeInto($stan, val)
-			})
-		} else {
+		if (sync) {
 			deepmergeInto($stan, val)
+		} else {
+			setTimeout(() => dispatch({ type: `${key}.onPull` })(val), 1)
 		}
 	}
 	if (paths) {
