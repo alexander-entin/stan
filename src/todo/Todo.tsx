@@ -4,8 +4,8 @@ import { $todo } from './$todo'
 export function Todo({ id }) {
 	const { map, onToggle, onDelete } = useStan($todo)
 	const todo = map[id]
-	console.log('Todo.render', todo)
-	return (
+	// console.log('Todo.render', todo)
+	return todo && (
 		<li className={todo.done ? 'line-through' : ''}>
 			<input
 				type="checkbox"

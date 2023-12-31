@@ -2,9 +2,9 @@ import { useStan } from '../utils/stan'
 import { $todo } from './$todo'
 
 export function TodoToolbar() {
-	console.log('TodoToolbar.render')
+	// console.log('TodoToolbar.render')
 	const { map, filter, onFilter, onDeleteDone } = useStan($todo)
-	return (<>
+	return <>
 		<input
 			type="checkbox"
 			checked={filter === '!done'}
@@ -18,6 +18,6 @@ export function TodoToolbar() {
 		>
 			Remove completed
 		</button>
-	</>)
+	</>
 }
 

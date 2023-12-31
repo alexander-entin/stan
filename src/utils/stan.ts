@@ -76,7 +76,7 @@ export const dispatch = ({ id, at, type }: Partial<EventMeta>) => (...payload: u
 		// console.warn(type, JSON.stringify(payload), { f })
 		f(...payload)
 	})
-	console.warn(snapshot($global))
+	// console.warn(snapshot($global))
 }
 
 function isVirtualProp(o, k) {

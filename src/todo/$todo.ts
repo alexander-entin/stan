@@ -2,19 +2,7 @@ import { createStan, $event, derive } from '/src/utils/stan'
 import * as LocalStorage from '/src/drivers/localStorage'
 import * as Crud from '/src/drivers/crud'
 import * as telefuncs from './$todo.telefunc'
-
-export type Todo = {
-	id: string,
-	text: string,
-	done?: boolean,
-}
-
-export const filters = {
-	'': x => true,
-	'!done': x => !x.done,
-}
-
-export type TodoFilter = keyof typeof filters
+import { Todo, TodoFilter, filters } from './helpers'
 
 export let $todo = {
 	map: {} as { [id: string]: Todo },
@@ -60,9 +48,9 @@ export let $todo = {
 }
 $todo = createStan('todo', $todo)
 
-// LocalStorage.sync('todo-ui', $todo, { paths: 'filter' })
+LocalStorage.sync('todo-ui', $todo, { paths: 'filter' })
 
-LocalStorage.sync('todo-local', $todo.map)
+LocalStorage.sync('todo', $todo.map)
 
 // Crud.sync('todo', $todo.map, {
 // 	crud: telefuncs,

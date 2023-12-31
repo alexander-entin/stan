@@ -8,7 +8,6 @@ import { Link } from '../components/Link'
 const menu = {
 	'/': 'Welcome',
 	'/todo': 'Todo',
-	'/star-wars': 'Data Fetching',
 }
 
 export default function LayoutDefault({	children }: { children: ReactNode }) {

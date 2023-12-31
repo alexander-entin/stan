@@ -1,6 +1,6 @@
 import { deepmergeInto } from 'deepmerge-ts'
 
-import { Todo, TodoFilter, filters } from './$todo'
+import { Todo, TodoFilter, filters } from './helpers'
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 

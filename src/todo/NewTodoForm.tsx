@@ -2,7 +2,7 @@ import { useStan } from '../utils/stan'
 import { $todo } from './$todo'
 
 export function NewTodoForm() {
-	console.log('NewTodoForm.render')
+	// console.log('NewTodoForm.render')
 	const { draft, onDraft, onAdd } = useStan($todo)
 	return (
 		<form
