@@ -1,14 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`1. todo.onDraft > $stan changes 1`] = `
-{
-  "todo": {
-    "draft": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
-  },
-}
-`;
-
-exports[`1. todo.onDraft > Page (deep) 1`] = `
+exports[`1. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -32,27 +24,15 @@ exports[`1. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
-exports[`2. todo.onAdd > $stan changes 1`] = `
+exports[`1. todo.onDraft > $stan changes 1`] = `
 {
   "todo": {
-    "draft": "",
-    "filtered": {
-      "0": {
-        "id": "#1580601600001",
-        "text": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
-      },
-    },
-    "map": {
-      "#1580601600001": {
-        "id": "#1580601600001",
-        "text": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
-      },
-    },
+    "draft": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
   },
 }
 `;
 
-exports[`2. todo.onAdd > Page (deep) 1`] = `
+exports[`2. todo.onAdd >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -107,18 +87,27 @@ exports[`2. todo.onAdd > Page (deep) 1`] = `
 ]
 `;
 
-exports[`3. todo.onDraft > $stan changes 1`] = `
+exports[`2. todo.onAdd > $stan changes 1`] = `
 {
   "todo": {
-    "draft": "buy milk",
+    "draft": "",
     "filtered": {
-      "0": undefined,
+      "0": {
+        "id": "#1580601600001",
+        "text": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
+      },
+    },
+    "map": {
+      "#1580601600001": {
+        "id": "#1580601600001",
+        "text": "read "Out of the Tar Pit" by Ben Moseley and Peter Marks",
+      },
     },
   },
 }
 `;
 
-exports[`3. todo.onDraft > Page (deep) 1`] = `
+exports[`3. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -156,6 +145,41 @@ exports[`3. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
+exports[`3. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "buy milk",
+    "filtered": {
+      "0": undefined,
+    },
+  },
+}
+`;
+
+exports[`4. todo.onAdd >  (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
 exports[`4. todo.onAdd > $stan changes 1`] = `
 {
   "todo": {
@@ -180,33 +204,7 @@ exports[`4. todo.onAdd > $stan changes 1`] = `
 }
 `;
 
-exports[`4. todo.onAdd > Page (deep) 1`] = `
-[
-  <h1>
-    To-do List
-  </h1>,
-  <form
-    onSubmit={[Function]}
-  >
-    <input
-      onInput={[Function]}
-      placeholder="New Todo"
-      type="text"
-      value=""
-    />
-    <button
-      className="btn"
-      type="submit"
-    >
-      Create
-    </button>
-  </form>,
-]
-`;
-
-exports[`5. todo.onAdd > $stan changes 1`] = `{}`;
-
-exports[`5. todo.onAdd > Page (deep) 1`] = `
+exports[`5. todo.onAdd >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -277,19 +275,9 @@ exports[`5. todo.onAdd > Page (deep) 1`] = `
 ]
 `;
 
-exports[`6. todo.onDraft > $stan changes 1`] = `
-{
-  "todo": {
-    "draft": " ",
-    "filtered": {
-      "0": undefined,
-      "1": undefined,
-    },
-  },
-}
-`;
+exports[`5. todo.onAdd > $stan changes 1`] = `{}`;
 
-exports[`6. todo.onDraft > Page (deep) 1`] = `
+exports[`6. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -327,9 +315,19 @@ exports[`6. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
-exports[`7. todo.onAdd > $stan changes 1`] = `{}`;
+exports[`6. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": " ",
+    "filtered": {
+      "0": undefined,
+      "1": undefined,
+    },
+  },
+}
+`;
 
-exports[`7. todo.onAdd > Page (deep) 1`] = `
+exports[`7. todo.onAdd >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -353,21 +351,9 @@ exports[`7. todo.onAdd > Page (deep) 1`] = `
 ]
 `;
 
-exports[`8. todo.onDraft > $stan changes 1`] = `
-{
-  "todo": {
-    "draft": "b",
-    "filtered": {
-      "0": {
-        "id": "#1580601600003",
-        "text": "buy milk",
-      },
-    },
-  },
-}
-`;
+exports[`7. todo.onAdd > $stan changes 1`] = `{}`;
 
-exports[`8. todo.onDraft > Page (deep) 1`] = `
+exports[`8. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -422,15 +408,21 @@ exports[`8. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
-exports[`9. todo.onDraft > $stan changes 1`] = `
+exports[`8. todo.onDraft > $stan changes 1`] = `
 {
   "todo": {
-    "draft": "bu",
+    "draft": "b",
+    "filtered": {
+      "0": {
+        "id": "#1580601600003",
+        "text": "buy milk",
+      },
+    },
   },
 }
 `;
 
-exports[`9. todo.onDraft > Page (deep) 1`] = `
+exports[`9. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -485,15 +477,15 @@ exports[`9. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
-exports[`10. todo.onDraft > $stan changes 1`] = `
+exports[`9. todo.onDraft > $stan changes 1`] = `
 {
   "todo": {
-    "draft": "buy",
+    "draft": "bu",
   },
 }
 `;
 
-exports[`10. todo.onDraft > Page (deep) 1`] = `
+exports[`10. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -517,15 +509,15 @@ exports[`10. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
-exports[`11. todo.onDraft > $stan changes 1`] = `
+exports[`10. todo.onDraft > $stan changes 1`] = `
 {
   "todo": {
-    "draft": "buy ",
+    "draft": "buy",
   },
 }
 `;
 
-exports[`11. todo.onDraft > Page (deep) 1`] = `
+exports[`11. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -580,15 +572,15 @@ exports[`11. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
-exports[`12. todo.onDraft > $stan changes 1`] = `
+exports[`11. todo.onDraft > $stan changes 1`] = `
 {
   "todo": {
-    "draft": "buy m",
+    "draft": "buy ",
   },
 }
 `;
 
-exports[`12. todo.onDraft > Page (deep) 1`] = `
+exports[`12. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -643,18 +635,15 @@ exports[`12. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
-exports[`13. todo.onDraft > $stan changes 1`] = `
+exports[`12. todo.onDraft > $stan changes 1`] = `
 {
   "todo": {
-    "draft": "buy me",
-    "filtered": {
-      "0": undefined,
-    },
+    "draft": "buy m",
   },
 }
 `;
 
-exports[`13. todo.onDraft > Page (deep) 1`] = `
+exports[`13. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -678,15 +667,18 @@ exports[`13. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
-exports[`14. todo.onDraft > $stan changes 1`] = `
+exports[`13. todo.onDraft > $stan changes 1`] = `
 {
   "todo": {
-    "draft": "buy mea",
+    "draft": "buy me",
+    "filtered": {
+      "0": undefined,
+    },
   },
 }
 `;
 
-exports[`14. todo.onDraft > Page (deep) 1`] = `
+exports[`14. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -724,15 +716,15 @@ exports[`14. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
-exports[`15. todo.onDraft > $stan changes 1`] = `
+exports[`14. todo.onDraft > $stan changes 1`] = `
 {
   "todo": {
-    "draft": "buy meat",
+    "draft": "buy mea",
   },
 }
 `;
 
-exports[`15. todo.onDraft > Page (deep) 1`] = `
+exports[`15. todo.onDraft >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -770,6 +762,38 @@ exports[`15. todo.onDraft > Page (deep) 1`] = `
 ]
 `;
 
+exports[`15. todo.onDraft > $stan changes 1`] = `
+{
+  "todo": {
+    "draft": "buy meat",
+  },
+}
+`;
+
+exports[`16. todo.onAdd >  (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
 exports[`16. todo.onAdd > $stan changes 1`] = `
 {
   "todo": {
@@ -796,28 +820,4 @@ exports[`16. todo.onAdd > $stan changes 1`] = `
     },
   },
 }
-`;
-
-exports[`16. todo.onAdd > Page (deep) 1`] = `
-[
-  <h1>
-    To-do List
-  </h1>,
-  <form
-    onSubmit={[Function]}
-  >
-    <input
-      onInput={[Function]}
-      placeholder="New Todo"
-      type="text"
-      value=""
-    />
-    <button
-      className="btn"
-      type="submit"
-    >
-      Create
-    </button>
-  </form>,
-]
 `;

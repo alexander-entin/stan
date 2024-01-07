@@ -6,7 +6,7 @@ import deepRenderer from 'react-test-renderer'
 import ShallowRenderer from 'react-test-renderer/shallow'
 import { deepmergeInto } from 'deepmerge-ts'
 
-import { Event, $global, snapshot, dispatch, reset } from './stan'
+import { Event, $global, snapshot, dispatch, replay } from './stan'
 
 export function normalize(story) {
 	if (Array.isArray(story)) {
@@ -30,16 +30,12 @@ export function normalize(story) {
 
 export function Story({ initial, events = [] as Event[], children }) {
 	useEffect(() => {
-		reset($global, initial)
-		events.forEach(event => {
-			const { data, ...meta } = event
-			dispatch(meta)(...structuredClone(data)!)
-		})
+		replay(events, initial)
 	}, [events])
 	return children
 }
 
-export function tell(Component: FC, story) {
+export function tell(story, Component: FC) {
 	const { initial, events } = normalize(story)
 	const fs = {
 		'0. initial': <Story initial={initial}><Component /></Story>
@@ -55,11 +51,19 @@ export function tell(Component: FC, story) {
 }
 
 export type DeepShallow = { [method in 'deep' | 'shallow']?: Record<string, FC> }
-export function test(story, components: DeepShallow, { it }) {
+export function test(story, { it })
+export function test(story, component: FC, { it })
+export function test(story, components: DeepShallow, { it })
+export function test(story, ...rest) {
+	const { it } = rest.pop()
+	const components = rest[0]
 	let { initial = {}, events } = normalize(story)
 	deepmergeInto($global, initial)
 	let snap = snapshot($global)
-	let { deep, shallow } = components ?? {}
+	let { deep, shallow } = components || {}
+	if (!deep && !shallow && components) {
+		deep = { '': components }
+	}
 	events.forEach((event, idx) => {
 		const { id, at, type, data } = event
 		dispatch({ id, at, type })(...(Array.isArray(data) ? data : [data]))

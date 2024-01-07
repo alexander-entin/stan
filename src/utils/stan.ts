@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import { proxy, subscribe, snapshot, useSnapshot, ref } from 'valtio'
 import { subscribeKey, derive, watch, devtools } from 'valtio/utils'
 import { nanoid } from 'nanoid'
@@ -63,20 +65,28 @@ export type EventMeta = {
 export type Event = EventMeta & { data?: any[] }
 
 let initial
-export const dispatch = ({ id, at, type }: Partial<EventMeta>) => (...payload: unknown[]) => {
-	if (import.meta.env.DEV && typeof window === 'object') {
-		initial ||= snapshot($global)
+let events = [] as Event[]
+export const dispatch = ({ id, at, type }: Partial<EventMeta>) => (...payload: any[]) => {
+	if (payload.length === 1 && payload[0].nativeEvent instanceof Event) {
+		payload = []
 	}
 	$event.id = id ?? nanoid()
 	$event.at = at ?? Date.now()
 	$event.type = type!
-	$event.data = payload
-	console.warn(type, JSON.stringify(payload))
-	Object.values(reactors[type!]).forEach(f => {
-		// console.warn(type, JSON.stringify(payload), { f })
-		f(...payload)
-	})
-	// console.warn(snapshot($global))
+	$event.data = structuredClone(payload)
+	if (import.meta.hot) {
+		initial ||= snapshot($global)
+		events.push(snapshot($event) as Event)
+	}
+	const handlers = reactors[type!]
+	if (handlers) {
+		Object.values(reactors[type!]).forEach(f => {
+			f(...payload)
+		})
+		console.log(type, JSON.stringify(payload), snapshot($global))
+	} else {
+		console.warn('No handler found', type)
+	}
 }
 
 function isVirtualProp(o, k) {
@@ -103,6 +113,23 @@ export function createStan<T extends object>(name: string, stan: T): T {
 	return $global[name] as T
 }
 
+export type Paths = string | string[] | string[][]
+export type SubscribeCallback = (ops: unknown[][]) => void
+export function subscribePaths(proxy: object, paths: Paths, fn: SubscribeCallback, ...rest) {
+	if (typeof paths === 'string') paths = paths.split(',')
+	paths = paths.map(x => typeof x === 'string' ? x.split('.') : x)
+	return subscribe(proxy, ops => {
+		ops = ops.filter(([_, path]) =>
+			(paths as string[][]).find(p => p.every((x, i) => path[i] === x))
+		)
+		ops.length && fn(ops)
+	}, ...rest)
+}
+
+export function integrated() {
+	return import.meta.env.MODE !== 'test' && import.meta.env.MODE !== 'story'
+}
+
 function dive(o, f, p = [] as string[]) {
 	Object.keys(o).forEach(k => {
 		if (!isDataProp(o, k)) return
@@ -113,7 +140,7 @@ function dive(o, f, p = [] as string[]) {
 	})
 }
 
-export function reset($stan, snap = initial) {
+export function put($stan, snap) {
 	if (!snap) return
 	dive(snap, (s, k, p) => {
 		const $ = path(p, $stan)
@@ -130,32 +157,32 @@ export function reset($stan, snap = initial) {
 	})
 }
 
-export function integrated() {
-	return import.meta.env.MODE !== 'test' && import.meta.env.MODE !== 'story'
+export function replay(events_, snap = initial) {
+	put($global, snap)
+	events = []
+	events_.forEach(event => {
+		const { data, ...meta } = event
+		dispatch(meta)(...structuredClone(data)!)
+	})
 }
 
-export type Paths = string | string[] | string[][]
-export type SubscribeCallback = (ops: unknown[][]) => void
-export function subscribePaths(proxy: object, paths: Paths, fn: SubscribeCallback, ...rest) {
-	if (typeof paths === 'string') paths = paths.split(',')
-	paths = paths.map(x => typeof x === 'string' ? x.split('.') : x)
-	return subscribe(proxy, ops => {
-		ops = ops.filter(([_, path]) =>
-			(paths as string[][]).find(p => p.every((x, i) => path[i] === x))
-		)
-		ops.length && fn(ops)
-	}, ...rest)
-}
+if (import.meta.hot) {
+	Object.assign(window, { $global, $event, proxy, subscribe, watch, derive, snapshot, reset: replay })
+	try {
+		devtools($global, { name: '$global', enabled: true })
+	} catch(e) {}
 
-if (import.meta.env.DEV && typeof window === 'object') {
-	Object.assign(window, { $global, $event, proxy, subscribe, watch, derive, snapshot, reset })
-	devtools($global, { name: '$global', enabled: true })
+	import.meta.hot.on('vite:afterUpdate', () => {
+		replay(events)
+	})
 
+	let start = 0
 	let snap
-	let events = [] as Event[]
 	function story() {
+		const events_ = events.slice(start)
+		start = events.length
 		const indent = snap ? '\t' : ''
-		let json = ['[', ...events.map(({ type, data = [] }) => {
+		let json = ['[', ...events_.map(({ type, data = [] }) => {
 			let rest = [data]
 			if (data.length === 0) {
 				rest = []
@@ -169,8 +196,7 @@ if (import.meta.env.DEV && typeof window === 'object') {
 			init = init.split('\n').map((r, i) => `${i ? '\t' : ''}${r}`).join('\n')
 			json = `{\n\tinitial: ${init},\n\tevents: ${json}\n}`
 		}
-		const val = snap ? { initial: snap, events } : events
-		events = []
+		const val = snap ? { initial: snap, events: events_ } : events_
 		snap = snapshot($global)
 		dive(snap, (s, k, p) => {
 			const $ = path(p, $global)
@@ -181,8 +207,5 @@ if (import.meta.env.DEV && typeof window === 'object') {
 		console.log(json)
 		return val
 	}
-	subscribe($event, () => {
-		events.push(snapshot($event) as Event)
-	})
 	window['story'] = story
 }

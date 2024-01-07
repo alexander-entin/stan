@@ -3,7 +3,7 @@ import { NewTodoForm } from './NewTodoForm'
 import { TodoToolbar } from './TodoToolbar'
 import { ClientOnly } from '../components/ClientOnly'
 
-export default function Page() {
+export function Page() {
 	// console.log('/todo render')
 	return <>
 		<h1>To-do List</h1>

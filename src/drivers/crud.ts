@@ -125,3 +125,6 @@ export function sync(key: string, $stan: object, config: Config, $config: Partia
 		}
 	})
 }
+
+const Crud = { sync }
+export default Crud

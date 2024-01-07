@@ -30,7 +30,7 @@ export function sync(key: string, $stan: object, { paths, sync }: Config = {}) {
 	}
 	if (paths) {
 		subscribePaths($stan, paths, () => {
-			const val = (paths as string[] | string[][]).reduce((v, p) => (
+			const val = paths!.reduce((v, p) => (
 				assocPath(p, path(p as any, $stan), v)
 			), {})
 			localStorage[key] = JSON.stringify(val)
@@ -41,3 +41,6 @@ export function sync(key: string, $stan: object, { paths, sync }: Config = {}) {
 		})
 	}
 }
+
+const LocalStorage = { sync }
+export default LocalStorage

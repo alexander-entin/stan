@@ -31,7 +31,8 @@ export default defineConfig(({ mode }) => ({
 				presetFluid(),
 				presetDaisy(),
 				presetIcons({
-					prefix: 'i-',
+					warn: true,
+					cdn: 'https://esm.sh/',
 					extraProperties: {
 						display: 'inline-block'
 					}

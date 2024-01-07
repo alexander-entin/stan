@@ -1,7 +1,4 @@
 import { ReactNode } from 'react'
-import '@unocss/reset/tailwind.css'
-import 'virtual:uno.css'
-// import 'virtual:unocss-devtools'
 
 import { Link } from '../components/Link'
 

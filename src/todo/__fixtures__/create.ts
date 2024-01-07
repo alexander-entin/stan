@@ -1,5 +1,5 @@
 import { tell, test } from '/src/utils/story'
-import Page from '../+Page'
+import { Page } from '../+Page'
 
 const story = [
 	['todo.onDraft', 'read "Out of the Tar Pit" by Ben Moseley and Peter Marks'],
@@ -20,8 +20,8 @@ const story = [
 	['todo.onAdd'],
 ]
 
-export default tell(Page, story)
+export default tell(story, Page)
 
 if (import.meta.vitest) {
-	test(story, { deep: { Page } }, import.meta.vitest)
+	test(story, Page, import.meta.vitest)
 }

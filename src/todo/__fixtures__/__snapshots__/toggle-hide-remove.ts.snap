@@ -1,5 +1,29 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`1. todo.onPull >  (deep) 1`] = `
+[
+  <h1>
+    To-do List
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onInput={[Function]}
+      placeholder="New Todo"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Create
+    </button>
+  </form>,
+]
+`;
+
 exports[`1. todo.onPull > $stan changes 1`] = `
 {
   "todo": {
@@ -39,106 +63,7 @@ exports[`1. todo.onPull > $stan changes 1`] = `
 }
 `;
 
-exports[`1. todo.onPull > Page (deep) 1`] = `
-[
-  <h1>
-    To-do List
-  </h1>,
-  <form
-    onSubmit={[Function]}
-  >
-    <input
-      onInput={[Function]}
-      placeholder="New Todo"
-      type="text"
-      value=""
-    />
-    <button
-      className="btn"
-      type="submit"
-    >
-      Create
-    </button>
-  </form>,
-]
-`;
-
-exports[`1. todo-local.onPull > $stan changes 1`] = `
-{
-  "todo": {
-    "filtered": {
-      "0": {
-        "done": false,
-        "id": "pqRxsRzfIvfPhyL1Ol7cb",
-        "text": "read",
-      },
-      "1": {
-        "done": true,
-        "id": "XONBkwGngyqr60paySNfs",
-        "text": "buy milk",
-      },
-      "2": {
-        "id": "yFtPqsesTs2Q6IcJS3-cG",
-        "text": "buy meat",
-      },
-    },
-    "map": {
-      "XONBkwGngyqr60paySNfs": {
-        "done": false,
-        "id": "XONBkwGngyqr60paySNfs",
-        "text": "buy milk",
-      },
-      "pqRxsRzfIvfPhyL1Ol7cb": {
-        "done": false,
-        "id": "pqRxsRzfIvfPhyL1Ol7cb",
-        "text": "read",
-      },
-      "yFtPqsesTs2Q6IcJS3-cG": {
-        "id": "yFtPqsesTs2Q6IcJS3-cG",
-        "text": "buy meat",
-      },
-    },
-  },
-}
-`;
-
-exports[`1. todo-local.onPull > Page (deep) 1`] = `
-[
-  <h1>
-    To-do List
-  </h1>,
-  <form
-    onSubmit={[Function]}
-  >
-    <input
-      onInput={[Function]}
-      placeholder="New Todo"
-      type="text"
-      value=""
-    />
-    <button
-      className="btn"
-      type="submit"
-    >
-      Create
-    </button>
-  </form>,
-]
-`;
-
-exports[`2. todo.onToggle > $stan changes 1`] = `
-{
-  "todo": {
-    "map": {
-      "XONBkwGngyqr60paySNfs": {
-        "done": true,
-      },
-    },
-  },
-}
-`;
-
-exports[`2. todo.onToggle > Page (deep) 1`] = `
+exports[`2. todo.onToggle >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -225,23 +150,19 @@ exports[`2. todo.onToggle > Page (deep) 1`] = `
 ]
 `;
 
-exports[`3. todo.onFilter > $stan changes 1`] = `
+exports[`2. todo.onToggle > $stan changes 1`] = `
 {
   "todo": {
-    "filter": "!done",
-    "filtered": {
-      "1": {
-        "done": undefined,
-        "id": "yFtPqsesTs2Q6IcJS3-cG",
-        "text": "buy meat",
+    "map": {
+      "XONBkwGngyqr60paySNfs": {
+        "done": true,
       },
-      "2": undefined,
     },
   },
 }
 `;
 
-exports[`3. todo.onFilter > Page (deep) 1`] = `
+exports[`3. todo.onFilter >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -265,17 +186,23 @@ exports[`3. todo.onFilter > Page (deep) 1`] = `
 ]
 `;
 
-exports[`4. todo.onDeleteDone > $stan changes 1`] = `
+exports[`3. todo.onFilter > $stan changes 1`] = `
 {
   "todo": {
-    "map": {
-      "XONBkwGngyqr60paySNfs": undefined,
+    "filter": "!done",
+    "filtered": {
+      "1": {
+        "done": undefined,
+        "id": "yFtPqsesTs2Q6IcJS3-cG",
+        "text": "buy meat",
+      },
+      "2": undefined,
     },
   },
 }
 `;
 
-exports[`4. todo.onDeleteDone > Page (deep) 1`] = `
+exports[`4. todo.onDeleteDone >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -346,15 +273,17 @@ exports[`4. todo.onDeleteDone > Page (deep) 1`] = `
 ]
 `;
 
-exports[`5. todo.onFilter > $stan changes 1`] = `
+exports[`4. todo.onDeleteDone > $stan changes 1`] = `
 {
   "todo": {
-    "filter": "",
+    "map": {
+      "XONBkwGngyqr60paySNfs": undefined,
+    },
   },
 }
 `;
 
-exports[`5. todo.onFilter > Page (deep) 1`] = `
+exports[`5. todo.onFilter >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -378,20 +307,15 @@ exports[`5. todo.onFilter > Page (deep) 1`] = `
 ]
 `;
 
-exports[`6. todo.onDelete > $stan changes 1`] = `
+exports[`5. todo.onFilter > $stan changes 1`] = `
 {
   "todo": {
-    "filtered": {
-      "1": undefined,
-    },
-    "map": {
-      "yFtPqsesTs2Q6IcJS3-cG": undefined,
-    },
+    "filter": "",
   },
 }
 `;
 
-exports[`6. todo.onDelete > Page (deep) 1`] = `
+exports[`6. todo.onDelete >  (deep) 1`] = `
 [
   <h1>
     To-do List
@@ -444,4 +368,17 @@ exports[`6. todo.onDelete > Page (deep) 1`] = `
     </li>
   </ul>,
 ]
+`;
+
+exports[`6. todo.onDelete > $stan changes 1`] = `
+{
+  "todo": {
+    "filtered": {
+      "1": undefined,
+    },
+    "map": {
+      "yFtPqsesTs2Q6IcJS3-cG": undefined,
+    },
+  },
+}
 `;

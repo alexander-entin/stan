@@ -1,0 +1,971 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`1. circles.onAdd >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 71,
+          "top": 101,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`1. circles.onAdd > $stan changes 1`] = `
+{
+  "circles": {
+    "list": {
+      "0": {
+        "x": 71,
+        "y": 101,
+      },
+    },
+    "size": 1,
+  },
+}
+`;
+
+exports[`2. circles.onAdd >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 71,
+          "top": 101,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 134,
+          "top": 101,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`2. circles.onAdd > $stan changes 1`] = `
+{
+  "circles": {
+    "list": {
+      "1": {
+        "x": 134,
+        "y": 101,
+      },
+    },
+    "size": 2,
+  },
+}
+`;
+
+exports[`3. circles.onAdd >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 71,
+          "top": 101,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 134,
+          "top": 101,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 198,
+          "top": 99,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`3. circles.onAdd > $stan changes 1`] = `
+{
+  "circles": {
+    "list": {
+      "2": {
+        "x": 198,
+        "y": 99,
+      },
+    },
+    "size": 3,
+  },
+}
+`;
+
+exports[`4. circles.onUndo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 71,
+          "top": 101,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 134,
+          "top": 101,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`4. circles.onUndo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 2,
+  },
+}
+`;
+
+exports[`5. circles.onUndo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 71,
+          "top": 101,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`5. circles.onUndo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 1,
+  },
+}
+`;
+
+exports[`6. circles.onUndo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  />,
+]
+`;
+
+exports[`6. circles.onUndo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 0,
+  },
+}
+`;
+
+exports[`7. circles.onRedo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 71,
+          "top": 101,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`7. circles.onRedo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 1,
+  },
+}
+`;
+
+exports[`8. circles.onAdd >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 190,
+          "top": 115,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 190,
+          "top": 57,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`8. circles.onAdd > $stan changes 1`] = `
+{
+  "circles": {
+    "list": {
+      "1": {
+        "x": 190,
+        "y": 57,
+      },
+      "2": undefined,
+    },
+    "size": 2,
+  },
+}
+`;
+
+exports[`8. circles.onRedo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 71,
+          "top": 101,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 134,
+          "top": 101,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`8. circles.onRedo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 2,
+  },
+}
+`;
+
+exports[`9. circles.onAdd >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 71,
+          "top": 101,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 134,
+          "top": 101,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 101,
+          "top": 148,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`9. circles.onAdd > $stan changes 1`] = `
+{
+  "circles": {
+    "list": {
+      "2": {
+        "x": 101,
+        "y": 148,
+      },
+    },
+    "size": 3,
+  },
+}
+`;
+
+exports[`10. circles.onUndo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 71,
+          "top": 101,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 134,
+          "top": 101,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`10. circles.onUndo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 2,
+  },
+}
+`;
+
+exports[`11. circles.onRedo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 71,
+          "top": 101,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 134,
+          "top": 101,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 101,
+          "top": 148,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`11. circles.onRedo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 3,
+  },
+}
+`;
+
+exports[`11. circles.onUndo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 190,
+          "top": 115,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`11. circles.onUndo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 1,
+  },
+}
+`;
+
+exports[`12. circles.onUndo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  />,
+]
+`;
+
+exports[`12. circles.onUndo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 0,
+  },
+}
+`;
+
+exports[`13. circles.onRedo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 190,
+          "top": 115,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`13. circles.onRedo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 1,
+  },
+}
+`;
+
+exports[`14. circles.onRedo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 190,
+          "top": 115,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 190,
+          "top": 57,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`14. circles.onRedo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 2,
+  },
+}
+`;
+
+exports[`15. circles.onRedo >  (deep) 1`] = `
+[
+  <div
+    className="absolute left-0 top-0"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-undo text-xl"
+      />
+    </button>
+    <button
+      className="btn"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="i-mdi-redo text-xl"
+      />
+    </button>
+  </div>,
+  <div
+    className="h-100vh"
+    onClick={[Function]}
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 190,
+          "top": 115,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 190,
+          "top": 57,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 190,
+          "top": 7,
+        }
+      }
+    />
+  </div>,
+]
+`;
+
+exports[`15. circles.onRedo > $stan changes 1`] = `
+{
+  "circles": {
+    "size": 3,
+  },
+}
+`;
