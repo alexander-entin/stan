@@ -7,7 +7,7 @@ import logoUrl from './assets/logo.svg'
 
 // Default config (can be overridden by pages)
 export default {
-	// Layout,
+	Layout,
 	Head,
 	// <title>
 	title: 'Sandbox',

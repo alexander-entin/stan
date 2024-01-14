@@ -29,7 +29,9 @@ export default defineConfig(({ mode }) => ({
 				presetAttributify(),
 				presetUno(),
 				presetFluid(),
-				presetDaisy(),
+				presetDaisy({
+					themes: ["business"],
+				}),
 				presetIcons({
 					warn: true,
 					cdn: 'https://esm.sh/',

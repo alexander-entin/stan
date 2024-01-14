@@ -2,19 +2,16 @@ import { tell, test } from '/src/utils/story'
 import { Page } from '../+Page'
 
 const story = [
-	["circles.onAdd", [190, 115]],
-	["circles.onAdd", [283, 115]],
-	["circles.onAdd", [362, 113]],
+	["circles.onAdd", [27, 51]],
+	["circles.onAdd", [42, 57]],
+	["circles.onAdd", [55, 61]],
+	["circles.onAdd", [67, 66]],
+	["circles.onAdd", [82, 71]],
 	["circles.onUndo"],
 	["circles.onUndo"],
-	["circles.onUndo"],
-	["circles.onRedo"],
-	["circles.onAdd", [190, 57]],
-	["circles.onAdd", [190, 7]],
+	["circles.onAdd", [96, 75]],
 	["circles.onUndo"],
 	["circles.onUndo"],
-	["circles.onUndo"],
-	["circles.onRedo"],
 	["circles.onRedo"],
 	["circles.onRedo"],
 ]

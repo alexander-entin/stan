@@ -1,11 +1,16 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import { FC, useEffect } from 'react'
-import { diff } from 'deep-object-diff'
+import { FC, useEffect, useState } from 'react'
 import deepRenderer from 'react-test-renderer'
 import ShallowRenderer from 'react-test-renderer/shallow'
 import { deepmergeInto } from 'deepmerge-ts'
+import { useLocalStorage } from 'react-use'
+import JsonView from 'react18-json-view'
+import 'react18-json-view/src/style.css'
+import 'react18-json-view/src/dark.css'
+import { JsonDiffComponent } from 'json-diff-react'
 
+import './story.css'
 import { Event, $global, snapshot, dispatch, replay } from './stan'
 
 export function normalize(story) {
@@ -28,11 +33,109 @@ export function normalize(story) {
 	return story
 }
 
-export function Story({ initial, events = [] as Event[], children }) {
+const a = {
+	"sync": {},
+	"circles": {
+		"list": [
+			{
+				"x": 157,
+				"y": 82
+			},
+			{
+				"x": 133,
+				"y": 73
+			},
+			{
+				"x": 110,
+				"y": 65
+			},
+			{
+				"x": 82,
+				"y": 58
+			},
+			{
+				"x": 53,
+				"y": 51
+			}
+		],
+		"size": 3
+	}
+}
+
+const b = {
+	"sync": {},
+	"circles": {
+		"list": [
+			{
+				"x": 177,
+				"y": 91
+			},
+			{
+				"x": 157,
+				"y": 82
+			},
+			{
+				"x": 133,
+				"y": 73
+			},
+			{
+				"x": 110,
+				"y": 65
+			}
+		],
+		"size": 4
+	}
+}
+
+function JsonDiff({ a, b }) {
+	const [expanded, setExpanded] = useLocalStorage('JsonDiff.expanded', false)
+	return (
+		<div
+			className="h-full"
+			onClick={() => setExpanded(!expanded)}
+		>
+			<JsonDiffComponent
+				jsonA={a}
+				jsonB={b}
+				jsonDiffOptions={{
+					full: expanded,
+					maxElisions: 2,
+					renderElision: n => n > 1 ? `... (${n})` : '...',
+				}}
+			/>
+		</div>
+	)
+}
+
+const emptyArr = []
+export function Story({ initial, events = emptyArr as Event[], children }) {
+	const event = events[events.length - 1]
+	const [tab, setTab] = useLocalStorage('story.tab', 'UI')
+	const [states, setStates] = useState([] as any[])
+	let [prev, curr] = states.slice(-2)
+	curr ||= prev
 	useEffect(() => {
-		replay(events, initial)
+		setStates(replay(events, initial))
 	}, [events])
-	return children
+	const tabs = {
+		'Event': () => event && <JsonView src={event} />,
+		'State': () => event ? <JsonDiff a={prev} b={curr} /> : <JsonView src={curr} />,
+		'UI': () => children,
+	}
+	return <>
+		{(tabs[tab!] ?? tabs.UI)()}
+		<div className="tabs fixed bottom-0 mx-auto left-50% -translate-x-50% z-999">
+			{Object.keys(tabs).map(name =>
+				<a
+					className={`tab tab-bordered ${name === tab && 'tab-active'}`}
+					onClick={() => setTab(name)}
+					key={name}
+				>
+					{name}
+				</a>
+			)}
+		</div>
+	</>
 }
 
 export function tell(story, Component: FC) {

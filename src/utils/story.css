@@ -1,0 +1,21 @@
+.diff {
+	/* customization for the top-level <div> wrapper that contains the diff */
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	font-size: 1em;
+	white-space: pre;
+}
+
+.deletion {
+	/* customization for deleted lines (<div>) */
+	color: #ff0000;
+}
+
+.addition {
+	/* customization for added lines (<div>) */
+	color: #00dd00;
+}
+
+.unchanged {
+	/* customization for unchanged lines (<div>) */
+	color: gray;
+}

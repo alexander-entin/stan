@@ -10,8 +10,8 @@ const $circles = createStan('circles', {
 	list: [] as Point[],
 	size: 0,
 	onAdd(x, y) {
-		$circles.list[$circles.size++] = { x, y }
-		$circles.list.length = $circles.size
+		$circles.list.length = $circles.size++
+		$circles.list.push({ x, y })
 	},
 	onUndo() {
 		if ($circles.size) {

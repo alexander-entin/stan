@@ -4,6 +4,7 @@ import { proxy, subscribe, snapshot, useSnapshot, ref } from 'valtio'
 import { subscribeKey, derive, watch, devtools } from 'valtio/utils'
 import { nanoid } from 'nanoid'
 import { path } from 'rambda'
+import { diff } from 'deep-object-diff'
 
 export { subscribe, subscribeKey, snapshot, watch, derive, ref }
 export const useStan = useSnapshot
@@ -74,8 +75,10 @@ export const dispatch = ({ id, at, type }: Partial<EventMeta>) => (...payload: a
 	$event.at = at ?? Date.now()
 	$event.type = type!
 	$event.data = structuredClone(payload)
+	let snap
 	if (import.meta.hot) {
-		initial ||= snapshot($global)
+		snap = snapshot($global)
+		initial ||= snap
 		events.push(snapshot($event) as Event)
 	}
 	const handlers = reactors[type!]
@@ -83,7 +86,9 @@ export const dispatch = ({ id, at, type }: Partial<EventMeta>) => (...payload: a
 		Object.values(reactors[type!]).forEach(f => {
 			f(...payload)
 		})
-		console.log(type, JSON.stringify(payload), snapshot($global))
+		if (import.meta.hot) {
+			console.log(type, JSON.stringify(payload), { '1. prev': snap, '2. changes': diff(snap, snapshot($global)), '3. next': snapshot($global) })
+		}
 	} else {
 		console.warn('No handler found', type)
 	}
@@ -158,12 +163,15 @@ export function put($stan, snap) {
 }
 
 export function replay(events_, snap = initial) {
+	const states = [snap && JSON.parse(JSON.stringify(snap))]
 	put($global, snap)
 	events = []
 	events_.forEach(event => {
 		const { data, ...meta } = event
 		dispatch(meta)(...structuredClone(data)!)
+		states.push(JSON.parse(JSON.stringify(snapshot($global))))
 	})
+	return states
 }
 
 if (import.meta.hot) {
@@ -173,6 +181,7 @@ if (import.meta.hot) {
 	} catch(e) {}
 
 	import.meta.hot.on('vite:afterUpdate', () => {
+		console.log('HMR')
 		replay(events)
 	})
 

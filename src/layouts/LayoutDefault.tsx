@@ -1,3 +1,6 @@
+import '@unocss/reset/tailwind.css'
+import 'virtual:uno.css'
+// import 'virtual:unocss-devtools'
 import { ReactNode } from 'react'
 
 import { Link } from '../components/Link'
@@ -8,6 +11,7 @@ const menu = {
 }
 
 export default function LayoutDefault({	children }: { children: ReactNode }) {
+	return children
 	return (
 		<div flex>
 			<div flex flex-col shrink-0 p-20 leading-7 border-r-2 border-gray-500>
