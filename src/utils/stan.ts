@@ -163,6 +163,7 @@ export function put($stan, snap) {
 }
 
 export function replay(events_, snap = initial) {
+	snap ||= snapshot($global)
 	const states = [snap && JSON.parse(JSON.stringify(snap))]
 	put($global, snap)
 	events = []

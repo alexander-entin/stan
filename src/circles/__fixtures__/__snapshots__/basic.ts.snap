@@ -32,8 +32,8 @@ exports[`1. circles.onAdd >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 71,
-          "top": 101,
+          "left": 27,
+          "top": 51,
         }
       }
     />
@@ -46,8 +46,8 @@ exports[`1. circles.onAdd > $stan changes 1`] = `
   "circles": {
     "list": {
       "0": {
-        "x": 71,
-        "y": 101,
+        "x": 27,
+        "y": 51,
       },
     },
     "size": 1,
@@ -87,8 +87,8 @@ exports[`2. circles.onAdd >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 71,
-          "top": 101,
+          "left": 27,
+          "top": 51,
         }
       }
     />
@@ -96,8 +96,8 @@ exports[`2. circles.onAdd >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 134,
-          "top": 101,
+          "left": 42,
+          "top": 57,
         }
       }
     />
@@ -110,8 +110,8 @@ exports[`2. circles.onAdd > $stan changes 1`] = `
   "circles": {
     "list": {
       "1": {
-        "x": 134,
-        "y": 101,
+        "x": 42,
+        "y": 57,
       },
     },
     "size": 2,
@@ -151,8 +151,8 @@ exports[`3. circles.onAdd >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 71,
-          "top": 101,
+          "left": 27,
+          "top": 51,
         }
       }
     />
@@ -160,8 +160,8 @@ exports[`3. circles.onAdd >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 134,
-          "top": 101,
+          "left": 42,
+          "top": 57,
         }
       }
     />
@@ -169,8 +169,8 @@ exports[`3. circles.onAdd >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 198,
-          "top": 99,
+          "left": 55,
+          "top": 61,
         }
       }
     />
@@ -183,8 +183,8 @@ exports[`3. circles.onAdd > $stan changes 1`] = `
   "circles": {
     "list": {
       "2": {
-        "x": 198,
-        "y": 99,
+        "x": 55,
+        "y": 61,
       },
     },
     "size": 3,
@@ -192,7 +192,7 @@ exports[`3. circles.onAdd > $stan changes 1`] = `
 }
 `;
 
-exports[`4. circles.onUndo >  (deep) 1`] = `
+exports[`4. circles.onAdd >  (deep) 1`] = `
 [
   <div
     className="absolute left-0 top-0"
@@ -208,7 +208,7 @@ exports[`4. circles.onUndo >  (deep) 1`] = `
     </button>
     <button
       className="btn"
-      disabled={false}
+      disabled={true}
       onClick={[Function]}
     >
       <span
@@ -224,8 +224,8 @@ exports[`4. circles.onUndo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 71,
-          "top": 101,
+          "left": 27,
+          "top": 51,
         }
       }
     />
@@ -233,8 +233,26 @@ exports[`4. circles.onUndo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 134,
-          "top": 101,
+          "left": 42,
+          "top": 57,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 55,
+          "top": 61,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 67,
+          "top": 66,
         }
       }
     />
@@ -242,15 +260,21 @@ exports[`4. circles.onUndo >  (deep) 1`] = `
 ]
 `;
 
-exports[`4. circles.onUndo > $stan changes 1`] = `
+exports[`4. circles.onAdd > $stan changes 1`] = `
 {
   "circles": {
-    "size": 2,
+    "list": {
+      "3": {
+        "x": 67,
+        "y": 66,
+      },
+    },
+    "size": 4,
   },
 }
 `;
 
-exports[`5. circles.onUndo >  (deep) 1`] = `
+exports[`5. circles.onAdd >  (deep) 1`] = `
 [
   <div
     className="absolute left-0 top-0"
@@ -266,7 +290,7 @@ exports[`5. circles.onUndo >  (deep) 1`] = `
     </button>
     <button
       className="btn"
-      disabled={false}
+      disabled={true}
       onClick={[Function]}
     >
       <span
@@ -282,8 +306,44 @@ exports[`5. circles.onUndo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 71,
-          "top": 101,
+          "left": 27,
+          "top": 51,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 42,
+          "top": 57,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 55,
+          "top": 61,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 67,
+          "top": 66,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 82,
+          "top": 71,
         }
       }
     />
@@ -291,10 +351,16 @@ exports[`5. circles.onUndo >  (deep) 1`] = `
 ]
 `;
 
-exports[`5. circles.onUndo > $stan changes 1`] = `
+exports[`5. circles.onAdd > $stan changes 1`] = `
 {
   "circles": {
-    "size": 1,
+    "list": {
+      "4": {
+        "x": 82,
+        "y": 71,
+      },
+    },
+    "size": 5,
   },
 }
 `;
@@ -306,7 +372,7 @@ exports[`6. circles.onUndo >  (deep) 1`] = `
   >
     <button
       className="btn"
-      disabled={true}
+      disabled={false}
       onClick={[Function]}
     >
       <span
@@ -326,19 +392,56 @@ exports[`6. circles.onUndo >  (deep) 1`] = `
   <div
     className="h-100vh"
     onClick={[Function]}
-  />,
+  >
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 27,
+          "top": 51,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 42,
+          "top": 57,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 55,
+          "top": 61,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 67,
+          "top": 66,
+        }
+      }
+    />
+  </div>,
 ]
 `;
 
 exports[`6. circles.onUndo > $stan changes 1`] = `
 {
   "circles": {
-    "size": 0,
+    "size": 4,
   },
 }
 `;
 
-exports[`7. circles.onRedo >  (deep) 1`] = `
+exports[`7. circles.onUndo >  (deep) 1`] = `
 [
   <div
     className="absolute left-0 top-0"
@@ -370,8 +473,26 @@ exports[`7. circles.onRedo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 71,
-          "top": 101,
+          "left": 27,
+          "top": 51,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 42,
+          "top": 57,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 55,
+          "top": 61,
         }
       }
     />
@@ -379,10 +500,10 @@ exports[`7. circles.onRedo >  (deep) 1`] = `
 ]
 `;
 
-exports[`7. circles.onRedo > $stan changes 1`] = `
+exports[`7. circles.onUndo > $stan changes 1`] = `
 {
   "circles": {
-    "size": 1,
+    "size": 3,
   },
 }
 `;
@@ -419,8 +540,8 @@ exports[`8. circles.onAdd >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 190,
-          "top": 115,
+          "left": 27,
+          "top": 51,
         }
       }
     />
@@ -428,8 +549,26 @@ exports[`8. circles.onAdd >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 190,
+          "left": 42,
           "top": 57,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 55,
+          "top": 61,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 96,
+          "top": 75,
         }
       }
     />
@@ -441,18 +580,18 @@ exports[`8. circles.onAdd > $stan changes 1`] = `
 {
   "circles": {
     "list": {
-      "1": {
-        "x": 190,
-        "y": 57,
+      "3": {
+        "x": 96,
+        "y": 75,
       },
-      "2": undefined,
+      "4": undefined,
     },
-    "size": 2,
+    "size": 4,
   },
 }
 `;
 
-exports[`8. circles.onRedo >  (deep) 1`] = `
+exports[`9. circles.onUndo >  (deep) 1`] = `
 [
   <div
     className="absolute left-0 top-0"
@@ -484,8 +623,8 @@ exports[`8. circles.onRedo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 71,
-          "top": 101,
+          "left": 27,
+          "top": 51,
         }
       }
     />
@@ -493,8 +632,17 @@ exports[`8. circles.onRedo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 134,
-          "top": 101,
+          "left": 42,
+          "top": 57,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 55,
+          "top": 61,
         }
       }
     />
@@ -502,82 +650,9 @@ exports[`8. circles.onRedo >  (deep) 1`] = `
 ]
 `;
 
-exports[`8. circles.onRedo > $stan changes 1`] = `
+exports[`9. circles.onUndo > $stan changes 1`] = `
 {
   "circles": {
-    "size": 2,
-  },
-}
-`;
-
-exports[`9. circles.onAdd >  (deep) 1`] = `
-[
-  <div
-    className="absolute left-0 top-0"
-  >
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-    >
-      <span
-        className="i-mdi-undo text-xl"
-      />
-    </button>
-    <button
-      className="btn"
-      disabled={true}
-      onClick={[Function]}
-    >
-      <span
-        className="i-mdi-redo text-xl"
-      />
-    </button>
-  </div>,
-  <div
-    className="h-100vh"
-    onClick={[Function]}
-  >
-    <div
-      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
-      style={
-        {
-          "left": 71,
-          "top": 101,
-        }
-      }
-    />
-    <div
-      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
-      style={
-        {
-          "left": 134,
-          "top": 101,
-        }
-      }
-    />
-    <div
-      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
-      style={
-        {
-          "left": 101,
-          "top": 148,
-        }
-      }
-    />
-  </div>,
-]
-`;
-
-exports[`9. circles.onAdd > $stan changes 1`] = `
-{
-  "circles": {
-    "list": {
-      "2": {
-        "x": 101,
-        "y": 148,
-      },
-    },
     "size": 3,
   },
 }
@@ -615,8 +690,8 @@ exports[`10. circles.onUndo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 71,
-          "top": 101,
+          "left": 27,
+          "top": 51,
         }
       }
     />
@@ -624,8 +699,8 @@ exports[`10. circles.onUndo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 134,
-          "top": 101,
+          "left": 42,
+          "top": 57,
         }
       }
     />
@@ -657,7 +732,7 @@ exports[`11. circles.onRedo >  (deep) 1`] = `
     </button>
     <button
       className="btn"
-      disabled={true}
+      disabled={false}
       onClick={[Function]}
     >
       <span
@@ -673,8 +748,8 @@ exports[`11. circles.onRedo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 71,
-          "top": 101,
+          "left": 27,
+          "top": 51,
         }
       }
     />
@@ -682,8 +757,8 @@ exports[`11. circles.onRedo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 134,
-          "top": 101,
+          "left": 42,
+          "top": 57,
         }
       }
     />
@@ -691,8 +766,8 @@ exports[`11. circles.onRedo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 101,
-          "top": 148,
+          "left": 55,
+          "top": 61,
         }
       }
     />
@@ -708,202 +783,7 @@ exports[`11. circles.onRedo > $stan changes 1`] = `
 }
 `;
 
-exports[`11. circles.onUndo >  (deep) 1`] = `
-[
-  <div
-    className="absolute left-0 top-0"
-  >
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-    >
-      <span
-        className="i-mdi-undo text-xl"
-      />
-    </button>
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-    >
-      <span
-        className="i-mdi-redo text-xl"
-      />
-    </button>
-  </div>,
-  <div
-    className="h-100vh"
-    onClick={[Function]}
-  >
-    <div
-      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
-      style={
-        {
-          "left": 190,
-          "top": 115,
-        }
-      }
-    />
-  </div>,
-]
-`;
-
-exports[`11. circles.onUndo > $stan changes 1`] = `
-{
-  "circles": {
-    "size": 1,
-  },
-}
-`;
-
-exports[`12. circles.onUndo >  (deep) 1`] = `
-[
-  <div
-    className="absolute left-0 top-0"
-  >
-    <button
-      className="btn"
-      disabled={true}
-      onClick={[Function]}
-    >
-      <span
-        className="i-mdi-undo text-xl"
-      />
-    </button>
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-    >
-      <span
-        className="i-mdi-redo text-xl"
-      />
-    </button>
-  </div>,
-  <div
-    className="h-100vh"
-    onClick={[Function]}
-  />,
-]
-`;
-
-exports[`12. circles.onUndo > $stan changes 1`] = `
-{
-  "circles": {
-    "size": 0,
-  },
-}
-`;
-
-exports[`13. circles.onRedo >  (deep) 1`] = `
-[
-  <div
-    className="absolute left-0 top-0"
-  >
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-    >
-      <span
-        className="i-mdi-undo text-xl"
-      />
-    </button>
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-    >
-      <span
-        className="i-mdi-redo text-xl"
-      />
-    </button>
-  </div>,
-  <div
-    className="h-100vh"
-    onClick={[Function]}
-  >
-    <div
-      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
-      style={
-        {
-          "left": 190,
-          "top": 115,
-        }
-      }
-    />
-  </div>,
-]
-`;
-
-exports[`13. circles.onRedo > $stan changes 1`] = `
-{
-  "circles": {
-    "size": 1,
-  },
-}
-`;
-
-exports[`14. circles.onRedo >  (deep) 1`] = `
-[
-  <div
-    className="absolute left-0 top-0"
-  >
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-    >
-      <span
-        className="i-mdi-undo text-xl"
-      />
-    </button>
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-    >
-      <span
-        className="i-mdi-redo text-xl"
-      />
-    </button>
-  </div>,
-  <div
-    className="h-100vh"
-    onClick={[Function]}
-  >
-    <div
-      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
-      style={
-        {
-          "left": 190,
-          "top": 115,
-        }
-      }
-    />
-    <div
-      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
-      style={
-        {
-          "left": 190,
-          "top": 57,
-        }
-      }
-    />
-  </div>,
-]
-`;
-
-exports[`14. circles.onRedo > $stan changes 1`] = `
-{
-  "circles": {
-    "size": 2,
-  },
-}
-`;
-
-exports[`15. circles.onRedo >  (deep) 1`] = `
+exports[`12. circles.onRedo >  (deep) 1`] = `
 [
   <div
     className="absolute left-0 top-0"
@@ -935,8 +815,8 @@ exports[`15. circles.onRedo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 190,
-          "top": 115,
+          "left": 27,
+          "top": 51,
         }
       }
     />
@@ -944,7 +824,7 @@ exports[`15. circles.onRedo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 190,
+          "left": 42,
           "top": 57,
         }
       }
@@ -953,8 +833,17 @@ exports[`15. circles.onRedo >  (deep) 1`] = `
       className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
       style={
         {
-          "left": 190,
-          "top": 7,
+          "left": 55,
+          "top": 61,
+        }
+      }
+    />
+    <div
+      className="h-4 w-4 rounded-full absolute -m-2 border-white border-solid border-2"
+      style={
+        {
+          "left": 96,
+          "top": 75,
         }
       }
     />
@@ -962,10 +851,10 @@ exports[`15. circles.onRedo >  (deep) 1`] = `
 ]
 `;
 
-exports[`15. circles.onRedo > $stan changes 1`] = `
+exports[`12. circles.onRedo > $stan changes 1`] = `
 {
   "circles": {
-    "size": 3,
+    "size": 4,
   },
 }
 `;

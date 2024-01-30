@@ -1,6 +1,6 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import { FC, useEffect, useState } from 'react'
+import { FC, useMemo } from 'react'
 import deepRenderer from 'react-test-renderer'
 import ShallowRenderer from 'react-test-renderer/shallow'
 import { deepmergeInto } from 'deepmerge-ts'
@@ -9,6 +9,7 @@ import JsonView from 'react18-json-view'
 import 'react18-json-view/src/style.css'
 import 'react18-json-view/src/dark.css'
 import { JsonDiffComponent } from 'json-diff-react'
+import { diff } from 'deep-object-diff'
 
 import './story.css'
 import { Event, $global, snapshot, dispatch, replay } from './stan'
@@ -31,60 +32,6 @@ export function normalize(story) {
 		return { id, at, type, data }
 	}) || []
 	return story
-}
-
-const a = {
-	"sync": {},
-	"circles": {
-		"list": [
-			{
-				"x": 157,
-				"y": 82
-			},
-			{
-				"x": 133,
-				"y": 73
-			},
-			{
-				"x": 110,
-				"y": 65
-			},
-			{
-				"x": 82,
-				"y": 58
-			},
-			{
-				"x": 53,
-				"y": 51
-			}
-		],
-		"size": 3
-	}
-}
-
-const b = {
-	"sync": {},
-	"circles": {
-		"list": [
-			{
-				"x": 177,
-				"y": 91
-			},
-			{
-				"x": 157,
-				"y": 82
-			},
-			{
-				"x": 133,
-				"y": 73
-			},
-			{
-				"x": 110,
-				"y": 65
-			}
-		],
-		"size": 4
-	}
 }
 
 function JsonDiff({ a, b }) {
@@ -111,15 +58,11 @@ const emptyArr = []
 export function Story({ initial, events = emptyArr as Event[], children }) {
 	const event = events[events.length - 1]
 	const [tab, setTab] = useLocalStorage('story.tab', 'UI')
-	const [states, setStates] = useState([] as any[])
+	const states = useMemo(() => replay(events, initial), [events, initial])
 	let [prev, curr] = states.slice(-2)
-	curr ||= prev
-	useEffect(() => {
-		setStates(replay(events, initial))
-	}, [events])
 	const tabs = {
 		'Event': () => event && <JsonView src={event} />,
-		'State': () => event ? <JsonDiff a={prev} b={curr} /> : <JsonView src={curr} />,
+		'State': () => event ? <JsonDiff a={prev} b={curr} /> : <JsonView src={prev} />,
 		'UI': () => children,
 	}
 	return <>
