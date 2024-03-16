@@ -1,27 +1,21 @@
 import { createStan, useStan, LocalStorage } from '@agentin/stan'
-import { proxy, useSnapshot } from 'valtio'
 
-// export const $counter = createStan('counter', {
-// 	count: 0,
-// 	increment() {
-// 		$counter.count++
-// 	},
-// })
-
-export const $counter = proxy({
-	count: 0
+export const $counter = createStan('counter', {
+	count: 0,
+	increment() {
+		$counter.count++
+	},
 })
 
 LocalStorage.sync('counter', $counter)
 
 export function Counter() {
-	// const { count, increment } = useStan($counter)
-	const { count } = useSnapshot($counter)
+	const { count, increment } = useStan($counter)
 
 	return (
 		<button
 			className="btn"
-			// onClick={increment}
+			onClick={increment}
 		>
 			Counter {count}
 		</button>

@@ -79,19 +79,23 @@ export const dispatch = ({ id, at, type }: Partial<EventMeta>) => (...payload: a
 	$event.type = type!
 	$event.data = structuredClone(payload)
 	let snap
-	if (import.meta.hot) {
-		snap = snapshot($global)
-		initial ||= snap
-		events.push(snapshot($event) as Event)
-	}
+	try {
+		if (import.meta.hot) {
+			snap = snapshot($global)
+			initial ||= snap
+			events.push(snapshot($event) as Event)
+		}
+	} catch(e) {}
 	const handlers = reactors[type!]
 	if (handlers) {
 		Object.values(reactors[type!]).forEach(f => {
 			f(...payload)
 		})
-		if (import.meta.hot) {
-			console.log(type, JSON.stringify(payload), { '1. prev': snap, '2. changes': diff(snap, snapshot($global)), '3. next': snapshot($global) })
-		}
+		try {
+			if (import.meta.hot) {
+				console.log(type, JSON.stringify(payload), { '1. prev': snap, '2. changes': diff(snap, snapshot($global)), '3. next': snapshot($global) })
+			}
+			} catch (e) { }
 	} else {
 		console.warn('No handler found', type)
 	}
@@ -135,7 +139,9 @@ export function subscribePaths(proxy: object, paths: Paths, fn: SubscribeCallbac
 }
 
 export function integrated() {
-	return import.meta.env.MODE !== 'test' && import.meta.env.MODE !== 'story'
+	try {
+		return import.meta.env.MODE !== 'test' && import.meta.env.MODE !== 'story'
+	} catch (e) { }
 }
 
 function dive(o, f, p = [] as string[]) {
@@ -178,47 +184,49 @@ export function replay(events_, snap = initial) {
 	return states
 }
 
-if (import.meta.hot) {
-	Object.assign(window, { $global, $event, proxy, subscribe, watch, derive, snapshot, reset: replay })
-	try {
-		devtools($global, { name: '$global', enabled: true })
-	} catch(e) {}
+try {
+	if (import.meta.hot) {
+		Object.assign(window, { $global, $event, proxy, subscribe, watch, derive, snapshot, reset: replay })
+		try {
+			devtools($global, { name: '$global', enabled: true })
+		} catch(e) {}
 
-	import.meta.hot.on('vite:afterUpdate', () => {
-		console.log('HMR')
-		replay(events)
-	})
-
-	let start = 0
-	let snap
-	function story() {
-		const events_ = events.slice(start)
-		start = events.length
-		const indent = snap ? '\t' : ''
-		let json = ['[', ...events_.map(({ type, data = [] }) => {
-			let rest = [data]
-			if (data.length === 0) {
-				rest = []
-			} else if (data.length === 1 && !Array.isArray(data[0])) {
-				rest = data
-			}
-			return `\t${JSON.stringify([type, ...rest])},`
-		}), ']'].join(`\n${indent}`)
-		if (snap) {
-			let init = JSON.stringify(snap, null, '\t')
-			init = init.split('\n').map((r, i) => `${i ? '\t' : ''}${r}`).join('\n')
-			json = `{\n\tinitial: ${init},\n\tevents: ${json}\n}`
-		}
-		const val = snap ? { initial: snap, events: events_ } : events_
-		snap = snapshot($global)
-		dive(snap, (s, k, p) => {
-			const $ = path(p, $global)
-			if (!isDataProp($, k)) {
-				delete s[k]
-			}
+		import.meta.hot.on('vite:afterUpdate', () => {
+			console.log('HMR')
+			replay(events)
 		})
-		console.log(json)
-		return val
+
+		let start = 0
+		let snap
+		function story() {
+			const events_ = events.slice(start)
+			start = events.length
+			const indent = snap ? '\t' : ''
+			let json = ['[', ...events_.map(({ type, data = [] }) => {
+				let rest = [data]
+				if (data.length === 0) {
+					rest = []
+				} else if (data.length === 1 && !Array.isArray(data[0])) {
+					rest = data
+				}
+				return `\t${JSON.stringify([type, ...rest])},`
+			}), ']'].join(`\n${indent}`)
+			if (snap) {
+				let init = JSON.stringify(snap, null, '\t')
+				init = init.split('\n').map((r, i) => `${i ? '\t' : ''}${r}`).join('\n')
+				json = `{\n\tinitial: ${init},\n\tevents: ${json}\n}`
+			}
+			const val = snap ? { initial: snap, events: events_ } : events_
+			snap = snapshot($global)
+			dive(snap, (s, k, p) => {
+				const $ = path(p, $global)
+				if (!isDataProp($, k)) {
+					delete s[k]
+				}
+			})
+			console.log(json)
+			return val
+		}
+		window['story'] = story
 	}
-	window['story'] = story
-}
+} catch (e) { }
