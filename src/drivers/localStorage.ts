@@ -1,7 +1,7 @@
 import { path, assocPath } from 'rambda'
 import { deepmergeInto } from 'deepmerge-ts'
 
-import { createReactor, dispatch, integrated, subscribe, subscribePaths } from "../utils/stan"
+import { createReactor, dispatch, integrated, subscribe, subscribePaths } from ".."
 
 export type Config = {
 	paths?: string | string[] | string[][],

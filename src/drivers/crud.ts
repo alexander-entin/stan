@@ -1,5 +1,5 @@
 import { assocPath, indexBy } from 'rambda'
-import { Entity, integrated, $sync, $event, createReactor, dispatch, snapshot, subscribe, watch } from '../utils/stan'
+import { Entity, integrated, $sync, $event, createReactor, dispatch, snapshot, subscribe, watch } from '..'
 
 export type Mutation = 'post' | 'patch' | 'del'
 
